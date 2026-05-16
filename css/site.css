@@ -1017,6 +1017,95 @@
     .card p { margin: 0; font-size: 15px; color: var(--muted); }
     .card-icon { display: none; }
 
+    #features {
+      background: linear-gradient(180deg, var(--bg0) 0%, color-mix(in srgb, var(--bg1) 80%, #1e3a5f 20%) 100%);
+    }
+    .feature-grid {
+      list-style: none;
+      margin: 32px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 960px) {
+      .feature-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .feature-card {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg2) 92%, var(--surface));
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .feature-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+    .feature-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .feature-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .feature-icon svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+    .feature-card h3 {
+      margin: 0;
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+    }
+    .feature-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .feature-card--gen .feature-icon {
+      background: rgba(59, 130, 246, 0.18);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+    .feature-card--symbol .feature-icon {
+      background: rgba(139, 92, 246, 0.16);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, 0.32);
+    }
+    .feature-card--search .feature-icon {
+      background: rgba(34, 197, 94, 0.14);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+    .feature-card--cleanup .feature-icon {
+      background: rgba(251, 191, 36, 0.14);
+      color: #fcd34d;
+      border: 1px solid rgba(251, 191, 36, 0.32);
+    }
+    .feature-card--export .feature-icon {
+      background: rgba(45, 212, 191, 0.14);
+      color: #5eead4;
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+    .feature-card--desktop .feature-icon {
+      background: rgba(148, 163, 184, 0.12);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
     .steps {
       display: grid;
       gap: 16px;

@@ -213,56 +213,68 @@
         </section>
 
     <section id="features" aria-labelledby="features-title">
-              <div class="wrap">
-                <p class="eyebrow">Features</p>
-                <h2 id="features-title">What you get</h2>
-                <p class="lede" style="max-width:48ch;">Tools for the work you already do before layout.</p>
-                <div class="grid-3" style="margin-top:36px;">
-                  <article class="card">
-                    <div class="card-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>
-                    </div>
-                    <h3>AI circuit generation</h3>
-                    <p>Structured draft from a clear prompt—then iterate against datasheets, ratings, and pinouts like any generated artifact.</p>
-                  </article>
-                  <article class="card">
-                    <div class="card-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-                    </div>
-                    <h3>Datasheet → symbol / footprint</h3>
-                    <p>Cut pin-table transcription loops where models are supported. Always validate pads, thermal behavior, and pin-one orientation on the PDF.</p>
-                  </article>
-                  <article class="card">
-                    <div class="card-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                    </div>
-                    <h3>Distributor component search</h3>
-                    <p>One search surface across LCSC, DigiKey, and Mouser so MPNs land in the project instead of twenty browser tabs.</p>
-                  </article>
-                  <article class="card">
-                    <div class="card-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8H4l4.9 3.6-1.9 5.8 4.9-3.6 4.9 3.6-1.9-5.8 4.9-3.6H14L12 3z"/></svg>
-                    </div>
-                    <h3>Ctrl-U schematic cleanup</h3>
-                    <p>Align and de-clutter selected regions so diff reviews focus on nets and blocks—not spaghetti geometry.</p>
-                  </article>
-                  <article class="card">
-                    <div class="card-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                    </div>
-                    <h3>KiCad / Altium export</h3>
-                    <p>Bundled artifacts for the tools your org already uses for variants, simulation hooks, and manufacturing release.</p>
-                  </article>
-                  <article class="card">
-                    <div class="card-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                    </div>
-                    <h3>Desktop / private workflow</h3>
-                    <p>Designed for NDAs and lab policies: default path keeps IP off someone else’s infra until you choose otherwise.</p>
-                  </article>
-                </div>
-              </div>
-            </section>
+      <div class="wrap">
+        <p class="eyebrow">Features</p>
+        <h2 id="features-title">What you get</h2>
+        <p class="lede" style="max-width:44ch;">Schematic capture tools—before you open KiCad or Altium for layout.</p>
+        <ul class="feature-grid">
+          <li class="feature-card feature-card--gen">
+            <div class="feature-card-head">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+              </span>
+              <h3>Circuit generation</h3>
+            </div>
+            <p>Draft from a prompt, then edit against the datasheet.</p>
+          </li>
+          <li class="feature-card feature-card--symbol">
+            <div class="feature-card-head">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              </span>
+              <h3>Symbol from datasheet</h3>
+            </div>
+            <p>Build symbols where supported. Verify pads and pin one.</p>
+          </li>
+          <li class="feature-card feature-card--search">
+            <div class="feature-card-head">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </span>
+              <h3>Part search</h3>
+            </div>
+            <p>LCSC, DigiKey, and Mouser in one place.</p>
+          </li>
+          <li class="feature-card feature-card--cleanup">
+            <div class="feature-card-head">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8H4l4.9 3.6-1.9 5.8 4.9-3.6 4.9 3.6-1.9-5.8 4.9-3.6H14L12 3z"/></svg>
+              </span>
+              <h3>Sheet cleanup</h3>
+            </div>
+            <p>Ctrl-U to align regions before review.</p>
+          </li>
+          <li class="feature-card feature-card--export">
+            <div class="feature-card-head">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M5 12l7 7 7-7"/><path d="M5 19h14"/></svg>
+              </span>
+              <h3>KiCad / Altium export</h3>
+            </div>
+            <p>Hand off a bundle for layout in your main EDA.</p>
+          </li>
+          <li class="feature-card feature-card--desktop">
+            <div class="feature-card-head">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </span>
+              <h3>Desktop-first</h3>
+            </div>
+            <p>Projects stay on disk. No cloud upload by default.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
 
     <section id="compare" class="section-compare-premium" aria-labelledby="compare-title">
               <div class="wrap">
