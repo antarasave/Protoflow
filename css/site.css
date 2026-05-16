@@ -108,7 +108,8 @@
       color: var(--text);
       font-weight: 600;
       font-size: 15px;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
     .brand:focus-visible { outline-offset: 4px; }
     .announce {
