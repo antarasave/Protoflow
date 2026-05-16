@@ -39,11 +39,6 @@ const hero = extractMainSection(sourceMain, /<section class="hero"[\s\S]*?<\/sec
 const workflow = stripPageSingle(
   extractMainSection(read("workflow.html"), /<section[^>]*id="workflow"[\s\S]*?<\/section>/, "workflow")
 );
-const integration = extractMainSection(
-  sourceMain,
-  /<section class="section-muted"[\s\S]*?<\/section>/,
-  "integration"
-);
 const features = stripPageSingle(
   extractMainSection(read("features.html"), /<section[^>]*id="features"[\s\S]*?<\/section>/, "features")
 );
@@ -59,7 +54,7 @@ const download = stripPageSingle(
 );
 
 const mainContent = patchAnchors(
-  [hero, workflow, integration, features, compare, docs, faq, download]
+  [hero, workflow, features, compare, docs, faq, download]
     .map((s) => "    " + s.trim().split("\n").join("\n    "))
     .join("\n\n")
 );
