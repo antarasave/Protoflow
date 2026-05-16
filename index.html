@@ -38,127 +38,156 @@
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-              <div class="wrap hero-stack">
-                <div class="hero-copy">
-                  <h1 id="hero-title">Schematics shouldn&rsquo;t be this hard</h1>
-                  <p class="lede">
-                    ProtoFlow is a desktop app for schematic capture. Describe a circuit, get a draft you can edit, export to KiCad or Altium for layout. Files stay on your machine.
-                  </p>
-                  <div class="cta-row">
-                    <a class="btn btn-primary" href="#download">Download</a>
-                    <a class="btn btn-secondary" href="#workflow">How it works</a>
+          <div class="wrap hero-stack">
+            <div class="hero-copy">
+              <h1 id="hero-title">Schematics shouldn&rsquo;t be this hard</h1>
+              <p class="lede">
+                ProtoFlow is a desktop app for schematic capture. Describe a circuit, get a draft you can edit, export to KiCad or Altium for layout. Files stay on your machine.
+              </p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#download">Download</a>
+                <a class="btn btn-secondary" href="#workflow">How it works</a>
+              </div>
+              <p class="trust-line">Free to start. No credit card.</p>
+            </div>
+            <div class="ide-mock hero-preview" role="img" aria-label="Animated ProtoFlow IDE: import parts, generate circuit, cleanup layout, export to KiCad or Altium">
+              <div class="ide-chrome">
+                <span class="ide-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span class="ide-title">protoflow-app/main.sch</span>
+                <span>v1.0</span>
+              </div>
+              <div class="ide-body">
+                <ul class="ide-pipeline" aria-label="Design pipeline">
+                  <li>Import Parts</li>
+                  <li>Generate Circuit</li>
+                  <li>Cleanup Layout</li>
+                  <li>Export to EDA</li>
+                </ul>
+                <div class="ide-main">
+                  <div class="ide-schematic-wrap">
+                    <svg class="ide-schematic" viewBox="0 40 440 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <g class="wire-layer">
+                        <path class="wire-rail" pathLength="100" d="M 96 64 L 290 64 M 136 72 L 136 64 M 248 72 L 248 64 M 96 120 L 290 120 M 136 116 L 136 120 M 248 116 L 248 120"/>
+                        <path class="wire-aux" pathLength="100" d="M 84 88 L 104 88 M 84 100 L 104 100 M 178 80 L 206 80 M 178 88 L 206 88 M 178 102 L 206 102 M 178 110 L 206 110"/>
+                        <path class="import-stream" d="M 84 94 L 104 94"/>
+                        <path class="wire" pathLength="100" d="M 178 94 L 206 94 M 290 94 L 304 94"/>
+                        <path class="export-beam" pathLength="100" d="M 374 94 L 396 94"/>
+                      </g>
+                      <g class="import-panel">
+                        <title>Library import</title>
+                        <rect class="panel-box" x="18" y="74" width="66" height="40" rx="8"/>
+                        <text class="panel-title" x="51" y="92" text-anchor="middle">Import</text>
+                        <text class="panel-sub" x="51" y="104" text-anchor="middle">LCSC ┬╖ DigiKey</text>
+                        <circle class="panel-port" cx="84" cy="88" r="1.8"/>
+                        <circle class="panel-port" cx="84" cy="94" r="2.5"/>
+                        <circle class="panel-port" cx="84" cy="100" r="1.8"/>
+                      </g>
+                      <g class="part-u1">
+                        <title>ESP32 MCU</title>
+                        <line class="sch-pin" x1="94" y1="80" x2="104" y2="80"/>
+                        <line class="sch-pin" x1="94" y1="88" x2="104" y2="88"/>
+                        <line class="sch-pin" x1="94" y1="94" x2="104" y2="94"/>
+                        <line class="sch-pin" x1="94" y1="102" x2="104" y2="102"/>
+                        <line class="sch-pin" x1="94" y1="110" x2="104" y2="110"/>
+                        <rect class="sch-body" x="104" y="72" width="64" height="44"/>
+                        <text class="part-label" x="136" y="90" text-anchor="middle">U1</text>
+                        <text class="part-sub" x="136" y="103" text-anchor="middle">ESP32</text>
+                        <line class="sch-pin" x1="168" y1="80" x2="178" y2="80"/>
+                        <line class="sch-pin" x1="168" y1="88" x2="178" y2="88"/>
+                        <line class="sch-pin" x1="168" y1="94" x2="178" y2="94"/>
+                        <line class="sch-pin" x1="168" y1="102" x2="178" y2="102"/>
+                        <line class="sch-pin" x1="168" y1="110" x2="178" y2="110"/>
+                      </g>
+                      <g class="part-u2">
+                        <title>DAC IC</title>
+                        <line class="sch-pin" x1="206" y1="80" x2="216" y2="80"/>
+                        <line class="sch-pin" x1="206" y1="88" x2="216" y2="88"/>
+                        <line class="sch-pin" x1="206" y1="94" x2="216" y2="94"/>
+                        <line class="sch-pin" x1="206" y1="102" x2="216" y2="102"/>
+                        <line class="sch-pin" x1="206" y1="110" x2="216" y2="110"/>
+                        <rect class="sch-body" x="216" y="72" width="64" height="44"/>
+                        <text class="part-label" x="248" y="90" text-anchor="middle">U2</text>
+                        <text class="part-sub" x="248" y="103" text-anchor="middle">DAC</text>
+                        <line class="sch-pin" x1="280" y1="80" x2="290" y2="80"/>
+                        <line class="sch-pin" x1="280" y1="88" x2="290" y2="88"/>
+                        <line class="sch-pin" x1="280" y1="94" x2="290" y2="94"/>
+                        <line class="sch-pin" x1="280" y1="102" x2="290" y2="102"/>
+                        <line class="sch-pin" x1="280" y1="110" x2="290" y2="110"/>
+                      </g>
+                      <g class="cleanup-badge">
+                        <g transform="translate(216, 62)">
+                          <circle class="cleanup-ripple" cx="0" cy="0" r="10"/>
+                          <g class="cleanup-action">
+                            <text class="cleanup-label" x="0" y="1" text-anchor="middle" dominant-baseline="central">Ctrl-U</text>
+                          </g>
+                        </g>
+                      </g>
+                      <g class="export-panel">
+                        <title>Export bundle</title>
+                        <rect class="panel-box" x="304" y="68" width="72" height="52" rx="8"/>
+                        <text class="panel-title" x="340" y="84" text-anchor="middle">Export</text>
+                        <g class="export-chip kicad">
+                          <rect class="panel-chip" x="314" y="88" width="52" height="13" rx="6"/>
+                          <text class="panel-chip-label" x="340" y="97" text-anchor="middle">KiCad</text>
+                        </g>
+                        <g class="export-chip altium">
+                          <rect class="panel-chip" x="314" y="103" width="52" height="13" rx="6"/>
+                          <text class="panel-chip-label" x="340" y="112" text-anchor="middle">Altium</text>
+                        </g>
+                        <circle class="panel-port" cx="304" cy="94" r="2.5"/>
+                      </g>
+                    </svg>
                   </div>
-                  <p class="trust-line">Free to start. No credit card.</p>
-                </div>
-                <div class="ide-mock hero-preview" role="img" aria-label="Animated ProtoFlow IDE: import parts, generate circuit, cleanup layout, export to KiCad or Altium">
-                  <div class="ide-chrome">
-                    <span class="ide-dots" aria-hidden="true"><span></span><span></span><span></span></span>
-                    <span class="ide-title">protoflow-app/main.sch</span>
-                    <span>v1.0</span>
-                  </div>
-                  <div class="ide-body">
-                    <ul class="ide-pipeline" aria-label="Design pipeline">
-                      <li>Import Parts</li>
-                      <li>Generate Circuit</li>
-                      <li>Cleanup Layout</li>
-                      <li>Export to EDA</li>
-                    </ul>
-                    <div class="ide-main">
-                      <div class="ide-schematic-wrap">
-                        <svg class="ide-schematic" viewBox="0 40 440 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                          <g class="wire-layer">
-                            <path class="wire-rail" pathLength="100" d="M 96 64 L 290 64 M 136 72 L 136 64 M 248 72 L 248 64 M 96 120 L 290 120 M 136 116 L 136 120 M 248 116 L 248 120"/>
-                            <path class="wire-aux" pathLength="100" d="M 84 88 L 104 88 M 84 100 L 104 100 M 178 80 L 206 80 M 178 88 L 206 88 M 178 102 L 206 102 M 178 110 L 206 110"/>
-                            <path class="import-stream" d="M 84 94 L 104 94"/>
-                            <path class="wire" pathLength="100" d="M 178 94 L 206 94 M 290 94 L 304 94"/>
-                            <path class="export-beam" pathLength="100" d="M 374 94 L 396 94"/>
-                          </g>
-                          <g class="import-panel">
-                            <title>Library import</title>
-                            <rect class="panel-box" x="18" y="74" width="66" height="40" rx="8"/>
-                            <text class="panel-title" x="51" y="92" text-anchor="middle">Import</text>
-                            <text class="panel-sub" x="51" y="104" text-anchor="middle">LCSC · DigiKey</text>
-                            <circle class="panel-port" cx="84" cy="88" r="1.8"/>
-                            <circle class="panel-port" cx="84" cy="94" r="2.5"/>
-                            <circle class="panel-port" cx="84" cy="100" r="1.8"/>
-                          </g>
-                          <g class="part-u1">
-                            <title>ESP32 MCU</title>
-                            <line class="sch-pin" x1="94" y1="80" x2="104" y2="80"/>
-                            <line class="sch-pin" x1="94" y1="88" x2="104" y2="88"/>
-                            <line class="sch-pin" x1="94" y1="94" x2="104" y2="94"/>
-                            <line class="sch-pin" x1="94" y1="102" x2="104" y2="102"/>
-                            <line class="sch-pin" x1="94" y1="110" x2="104" y2="110"/>
-                            <rect class="sch-body" x="104" y="72" width="64" height="44"/>
-                            <text class="part-label" x="136" y="90" text-anchor="middle">U1</text>
-                            <text class="part-sub" x="136" y="103" text-anchor="middle">ESP32</text>
-                            <line class="sch-pin" x1="168" y1="80" x2="178" y2="80"/>
-                            <line class="sch-pin" x1="168" y1="88" x2="178" y2="88"/>
-                            <line class="sch-pin" x1="168" y1="94" x2="178" y2="94"/>
-                            <line class="sch-pin" x1="168" y1="102" x2="178" y2="102"/>
-                            <line class="sch-pin" x1="168" y1="110" x2="178" y2="110"/>
-                          </g>
-                          <g class="part-u2">
-                            <title>DAC IC</title>
-                            <line class="sch-pin" x1="206" y1="80" x2="216" y2="80"/>
-                            <line class="sch-pin" x1="206" y1="88" x2="216" y2="88"/>
-                            <line class="sch-pin" x1="206" y1="94" x2="216" y2="94"/>
-                            <line class="sch-pin" x1="206" y1="102" x2="216" y2="102"/>
-                            <line class="sch-pin" x1="206" y1="110" x2="216" y2="110"/>
-                            <rect class="sch-body" x="216" y="72" width="64" height="44"/>
-                            <text class="part-label" x="248" y="90" text-anchor="middle">U2</text>
-                            <text class="part-sub" x="248" y="103" text-anchor="middle">DAC</text>
-                            <line class="sch-pin" x1="280" y1="80" x2="290" y2="80"/>
-                            <line class="sch-pin" x1="280" y1="88" x2="290" y2="88"/>
-                            <line class="sch-pin" x1="280" y1="94" x2="290" y2="94"/>
-                            <line class="sch-pin" x1="280" y1="102" x2="290" y2="102"/>
-                            <line class="sch-pin" x1="280" y1="110" x2="290" y2="110"/>
-                          </g>
-                          <g class="cleanup-badge">
-                            <g transform="translate(216, 62)">
-                              <circle class="cleanup-ripple" cx="0" cy="0" r="10"/>
-                              <g class="cleanup-action">
-                                <text class="cleanup-label" x="0" y="1" text-anchor="middle" dominant-baseline="central">Ctrl-U</text>
-                              </g>
-                            </g>
-                          </g>
-                          <g class="export-panel">
-                            <title>Export bundle</title>
-                            <rect class="panel-box" x="304" y="68" width="72" height="52" rx="8"/>
-                            <text class="panel-title" x="340" y="84" text-anchor="middle">Export</text>
-                            <g class="export-chip kicad">
-                              <rect class="panel-chip" x="314" y="88" width="52" height="13" rx="6"/>
-                              <text class="panel-chip-label" x="340" y="97" text-anchor="middle">KiCad</text>
-                            </g>
-                            <g class="export-chip altium">
-                              <rect class="panel-chip" x="314" y="103" width="52" height="13" rx="6"/>
-                              <text class="panel-chip-label" x="340" y="112" text-anchor="middle">Altium</text>
-                            </g>
-                            <circle class="panel-port" cx="304" cy="94" r="2.5"/>
-                          </g>
-                        </svg>
+                  <div class="ide-footer">
+                    <div class="ide-panel">
+                      <div class="ide-panel-label">
+                        <span>System log</span>
+                        <span>T-NODE: 882-XJ</span>
                       </div>
-                      <div class="ide-footer">
-                        <div class="ide-panel">
-                          <div class="ide-panel-label">
-                            <span>System log</span>
-                            <span>T-NODE: 882-XJ</span>
-                          </div>
-                          <div class="ide-log" aria-hidden="true">
-                            <div class="line">&gt; Initializing ProtoFlow v1.0.0…</div>
-                            <div class="line">&gt; Importing from LCSC · DigiKey…</div>
-                            <div class="line">&gt; Generating ESP32 → DAC schematic…</div>
-                            <div class="line">&gt; Ctrl-U: aligning layout…</div>
-                            <div class="line ok">&gt; Exporting bundle → KiCad / Altium<span class="cursor" aria-hidden="true"></span></div>
-                          </div>
-                        </div>
+                      <div class="ide-log" aria-hidden="true">
+                        <div class="line">&gt; Initializing ProtoFlow v1.0.0ΓÇª</div>
+                        <div class="line">&gt; Importing from LCSC ┬╖ DigiKeyΓÇª</div>
+                        <div class="line">&gt; Generating ESP32 ΓåÆ DAC schematicΓÇª</div>
+                        <div class="line">&gt; Ctrl-U: aligning layoutΓÇª</div>
+                        <div class="line ok">&gt; Exporting bundle ΓåÆ KiCad / Altium<span class="cursor" aria-hidden="true"></span></div>
                       </div>
                     </div>
                   </div>
                 </div>
-        
               </div>
-            </section>
+            </div>
+    
+          </div>
+        </section>
+
+    <section id="problem" class="problem-section" aria-labelledby="problem-title">
+          <div class="wrap">
+            <p class="eyebrow">Problem</p>
+            <h2 id="problem-title">Most time is spent before layout</h2>
+            <p class="lede" style="max-width:48ch;">
+              Symbols, pins, libraries, and sheet cleanup repeat on every project. ProtoFlow targets that workΓÇönot placement or manufacturing sign-off.
+            </p>
+            <div class="problem-grid">
+              <div class="problem-panel">
+                <h3>Manual capture</h3>
+                <ul>
+                  <li>Building symbols from datasheets.</li>
+                  <li>Chasing parts across distributor sites.</li>
+                  <li>Cleaning up sheets before every review.</li>
+                </ul>
+              </div>
+              <div class="problem-panel problem-panel--resolve">
+                <h3>With ProtoFlow</h3>
+                <ul>
+                  <li>Draft from a prompt, then edit.</li>
+                  <li>Search LCSC, DigiKey, Mouser in one place.</li>
+                  <li>Export a bundle for KiCad or Altium.</li>
+                </ul>
+              </div>
+            </div>
+            <p class="trust-facts">Desktop app. Local project files. You verify pinouts and ratings before release.</p>
+          </div>
+        </section>
 
     <section id="workflow" aria-labelledby="step-zero-label">
           <div class="wrap workflow-wrap">
@@ -208,6 +237,16 @@
             <div class="workflow-actions">
               <a class="btn btn-primary" href="#download">Download</a>
             </div>
+          </div>
+        </section>
+
+    <section class="section-muted" aria-labelledby="fits-title">
+          <div class="wrap">
+            <p class="eyebrow">Integration</p>
+            <h2 id="fits-title">Where it fits</h2>
+            <p class="lede" style="max-width:48ch;">
+              Requirements and block diagram in ProtoFlow. Reviewed schematic exported. Layout and release in KiCad or Altium.
+            </p>
           </div>
         </section>
 
@@ -262,6 +301,46 @@
                 </div>
               </div>
             </section>
+
+    <section id="docs" class="section-alt" aria-labelledby="docs-title">
+          <div class="wrap">
+            <p class="eyebrow">Evidence</p>
+            <h2 id="docs-title">Documentation and proof</h2>
+            <p class="lede" style="max-width:54ch;">Replace placeholders with a two-minute screen capture, annotated stills of export and Ctrl-U, and versioned release notesΓÇöengineers trust what they can verify.</p>
+            <div class="grid-2" style="margin-top:28px;">
+              <div class="media-placeholder" role="status">
+                <strong style="font-family:var(--font-sans);color:var(--muted);display:block;margin-bottom:10px;font-size:14px;">Product walkthrough</strong>
+                Embed MP4 or YouTube with captions. Show: import ΓåÆ generate ΓåÆ Ctrl-U ΓåÆ export dialog.
+              </div>
+              <div class="media-placeholder" role="status">
+                <strong style="font-family:var(--font-sans);color:var(--muted);display:block;margin-bottom:10px;font-size:14px;">Screenshots</strong>
+                Static frames for library search, net highlight, and KiCad bundle contents on disk.
+              </div>
+            </div>
+            <div class="grid-2" style="margin-top:20px;">
+              <div class="card">
+                <h3>Supported EDA exports</h3>
+                <p class="muted" style="margin-bottom:12px;">List the exact formats and versions you ship (placeholder copy).</p>
+                <ul class="muted" style="margin:0;padding-left:1.2rem;font-size:15px;">
+                  <li>KiCad: <span class="dim">(e.g. .kicad_sch ΓÇö confirm in release notes)</span></li>
+                  <li>Altium: <span class="dim">(e.g. netlist / schematic ΓÇö confirm in release notes)</span></li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3>Community &amp; early access</h3>
+                <p class="muted" style="margin-bottom:12px;">Link your real Discord or forum when ready.</p>
+                <p class="muted" style="margin:0;font-size:15px;">
+                  <a href="#">Discord placeholder</a> ┬╖
+                  <a href="#">Early access changelog</a><br />
+                  <span class="dim" style="display:block;margin-top:10px;">Status: early access / public beta ΓÇö set expectations in one sentence here.</span>
+                </p>
+              </div>
+            </div>
+            <p class="dim" style="margin-top:24px;max-width:70ch;">
+              Built for hardware engineers, robotics teams, student competition groups, and anyone doing rapid bring-up where schematic iteration outruns appetite for manual sheet work.
+            </p>
+          </div>
+        </section>
 
     <section id="compare" class="section-compare-premium" aria-labelledby="compare-title">
               <div class="wrap">
@@ -442,6 +521,21 @@
                 </div>
               </div>
             </section>
+
+    <section class="section-alt" aria-labelledby="usecases-title">
+          <div class="wrap">
+            <p class="eyebrow">Who itΓÇÖs for</p>
+            <h2 id="usecases-title">Use cases</h2>
+            <p class="lede" style="max-width:44ch;">Student teams, startups, and integrators doing schematic work before layout.</p>
+            <div class="pill-row" style="margin-top:28px;">
+              <span class="pill">Student design teams</span>
+              <span class="pill">Hardware startups</span>
+              <span class="pill">Robotics &amp; mechatronics</span>
+              <span class="pill">Rapid prototyping labs</span>
+              <span class="pill">Embedded firmware engineers</span>
+            </div>
+          </div>
+        </section>
 
     <section id="faq" aria-labelledby="faq-title">
               <div class="wrap" style="max-width:720px;">

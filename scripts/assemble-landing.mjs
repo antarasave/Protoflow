@@ -4,48 +4,73 @@ import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-function extractMainSection(file, label) {
-  const html = fs.readFileSync(path.join(root, file), "utf8");
-  const m = html.match(/<main id="main">([\s\S]*?)<\/main>/);
-  if (!m) throw new Error(`No main in ${file}`);
-  return m[1].trim();
+function read(file) {
+  return fs.readFileSync(path.join(root, file), "utf8");
 }
 
-function cleanSection(html) {
+function extractMainSection(html, pattern, label) {
+  const m = html.match(pattern);
+  if (!m) throw new Error(`Missing section: ${label}`);
+  return m[0];
+}
+
+function stripPageSingle(html) {
   return html
-    .replace(/\s*class="page-single\s*"/g, "")
     .replace(/\s*class="page-single"/g, "")
-    .replace(/\s+class=""/g, "")
+    .replace(/\s*page-single\s+/g, " ")
+    .replace(/class="\s+/g, 'class="')
+    .replace(/class=""/g, "");
+}
+
+function patchAnchors(html) {
+  return html
+    .replace(/href="download\.html"/g, 'href="#download"')
     .replace(/href="workflow\.html"/g, 'href="#workflow"')
     .replace(/href="features\.html"/g, 'href="#features"')
     .replace(/href="compare\.html"/g, 'href="#compare"')
     .replace(/href="faq\.html"/g, 'href="#faq"')
-    .replace(/href="download\.html"/g, 'href="#download"')
     .replace(/href="docs\.html"/g, 'href="#docs"')
-    .replace(/href="index\.html"/g, 'href="#"')
-    .replace(/href="workflow\.html"/g, 'href="#workflow"')
-    .replace(/ aria-current="page"/g, "");
+    .replace(/href="index\.html"/g, 'href="#"');
 }
 
-function extractHero() {
-  const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
-  const m = html.match(/<section class="hero"[\s\S]*?<\/section>/);
-  if (!m) throw new Error("Hero section not found");
-  return m[0];
-}
+const sourceMain = read("source.html").match(/<main id="main">([\s\S]*?)<\/main>/)[1];
 
-const hero = extractHero()
-  .replace('class="hero page-single"', 'class="hero"')
-  .replace(/href="workflow\.html"/g, 'href="#workflow"')
-  .replace(/href="download\.html"/g, 'href="#download"');
-const workflow = cleanSection(extractMainSection("workflow.html", "workflow"));
-const features = cleanSection(extractMainSection("features.html", "features"));
-const compare = cleanSection(extractMainSection("compare.html", "compare"));
-const faq = cleanSection(extractMainSection("faq.html", "faq"));
-const docs = cleanSection(extractMainSection("docs.html", "docs"));
-const download = cleanSection(extractMainSection("download.html", "download"));
+const hero = extractMainSection(sourceMain, /<section class="hero"[\s\S]*?<\/section>/, "hero");
+const workflow = stripPageSingle(
+  extractMainSection(read("workflow.html"), /<section[^>]*id="workflow"[\s\S]*?<\/section>/, "workflow")
+);
+const problem = extractMainSection(sourceMain, /<section id="problem"[\s\S]*?<\/section>/, "problem");
+const integration = extractMainSection(
+  sourceMain,
+  /<section class="section-muted"[\s\S]*?<\/section>/,
+  "integration"
+);
+const features = stripPageSingle(
+  extractMainSection(read("features.html"), /<section[^>]*id="features"[\s\S]*?<\/section>/, "features")
+);
+const docs = extractMainSection(sourceMain, /<section id="docs"[\s\S]*?<\/section>/, "docs");
+const compare = stripPageSingle(
+  extractMainSection(read("compare.html"), /<section[^>]*id="compare"[\s\S]*?<\/section>/, "compare")
+);
+const usecases = extractMainSection(
+  sourceMain,
+  /<section class="section-alt" aria-labelledby="usecases-title"[\s\S]*?<\/section>/,
+  "usecases"
+);
+const faq = stripPageSingle(
+  extractMainSection(read("faq.html"), /<section[^>]*id="faq"[\s\S]*?<\/section>/, "faq")
+);
+const download = stripPageSingle(
+  extractMainSection(read("download.html"), /<section[^>]*id="download"[\s\S]*?<\/section>/, "download")
+);
 
-const header = `  <header class="site">
+const mainContent = patchAnchors(
+  [hero, problem, workflow, integration, features, docs, compare, usecases, faq, download]
+    .map((s) => "    " + s.trim().split("\n").join("\n    "))
+    .join("\n\n")
+);
+
+const headerFixed = `  <header class="site">
     <div class="header-inner">
       <a class="brand" href="#" aria-label="ProtoFlow home">
         <span class="brand-mark" aria-hidden="true">P</span>
@@ -83,10 +108,10 @@ const page = `<!DOCTYPE html>
     <span>Free to start. No credit card.</span>
   </div>
 
-${header}
+${headerFixed}
 
   <main id="main">
-${[hero, workflow, features, compare, faq, docs, download].map((s) => "    " + s.split("\n").join("\n    ")).join("\n\n")}
+${mainContent}
   </main>
 
   <footer class="site">
@@ -106,4 +131,4 @@ ${[hero, workflow, features, compare, faq, docs, download].map((s) => "    " + s
 `;
 
 fs.writeFileSync(path.join(root, "index.html"), page);
-console.log("Merged index.html");
+console.log("Assembled index.html (single-page landing)");

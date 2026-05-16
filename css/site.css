@@ -1540,6 +1540,23 @@
       padding-top: 32px;
       padding-bottom: var(--space-section);
     }
+
+    /* Single-page landing: scroll through sections, nav jumps to anchors */
+    body.page-landing main#main {
+      display: block;
+    }
+    body.page-landing main#main > section {
+      flex: none;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    body.page-landing .hero {
+      padding-top: 56px;
+      padding-bottom: var(--space-section);
+    }
+    body.page-landing section {
+      scroll-margin-top: 72px;
+    }
     @media (max-width: 720px) {
       .header-inner {
         grid-template-columns: 1fr auto;
@@ -1550,22 +1567,4 @@
         justify-self: center;
         padding-top: 8px;
       }
-    }
-
-    /* Single-page landing layout */
-    body.page-landing main#main {
-      display: block;
-      flex: none;
-    }
-    body.page-landing main#main > section {
-      scroll-margin-top: 80px;
-      border-bottom: 1px solid var(--border);
-      padding: var(--space-section) 24px;
-    }
-    body.page-landing .hero {
-      padding-top: 56px;
-      padding-bottom: var(--space-section);
-    }
-    body.page-landing .footer-cta {
-      border-bottom: none;
     }
