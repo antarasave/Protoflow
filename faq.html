@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Frequently asked questions about ProtoFlow schematic capture and export." />
+  <title>FAQ — ProtoFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body class="site-body page-sub">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="announce" role="region" aria-label="Early access">
+    <strong>Early access</strong>
+    <span>Free to start. No credit card.</span>
+  </div>
+
+  <header class="site">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="ProtoFlow home">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        ProtoFlow
+      </a>
+      <nav class="primary" aria-label="Primary">
+        <a href="workflow.html">Workflow</a>
+        <a href="features.html">Features</a>
+        <a href="compare.html">Compare</a>
+        <a href="faq.html" aria-current="page">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-single" id="faq" aria-labelledby="faq-title">
+          <div class="wrap" style="max-width:720px;">
+            <p class="eyebrow">FAQ</p>
+            <h2 id="faq-title">FAQ</h2>
+            <p class="lede"><strong>Direct answers</strong> — short, engineer-to-engineer. Update any product-specific limits as you ship.</p>
+    
+            <details class="faq">
+              <summary>Does ProtoFlow replace KiCad or Altium?</summary>
+              <p class="ans"><strong>No.</strong> It targets schematic capture and prep, then export. Layout, DRC, manufacturing outputs, and org-wide library governance stay in your EDA toolchain.</p>
+            </details>
+            <details class="faq">
+              <summary>Will the AI get my design “right” on the first try?</summary>
+              <p class="ans"><strong>Assume no.</strong> Treat AI output as a first draft. You are responsible for datasheet-accurate pinouts, ratings, and design review—same as any generated code.</p>
+            </details>
+            <details class="faq">
+              <summary>Where do my files live?</summary>
+              <p class="ans"><strong>On your machine</strong> for the desktop workflow. If you add cloud features later, say exactly what leaves the device and when.</p>
+            </details>
+            <details class="faq">
+              <summary>Do I need a credit card to download?</summary>
+              <p class="ans"><strong>No</strong> for this landing page’s promise—swap in your real billing policy if that changes.</p>
+            </details>
+            <details class="faq">
+              <summary>What should I verify after export?</summary>
+              <p class="ans">Symbol pin maps, power trees, default footprints, ERC in your EDA tool, and any analog-sensitive nets. Export is a handoff, not sign-off.</p>
+            </details>
+          </div>
+        </section>
+  </main>
+
+  <footer class="site">
+    <div class="footer-inner">
+      <span>© <span id="y"></span> ProtoFlow. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="docs.html">Documentation</a>
+        <a href="#">Privacy</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

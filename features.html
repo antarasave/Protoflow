@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ProtoFlow features for schematic capture, libraries, cleanup, and export." />
+  <title>Features — ProtoFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body class="site-body page-sub">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="announce" role="region" aria-label="Early access">
+    <strong>Early access</strong>
+    <span>Free to start. No credit card.</span>
+  </div>
+
+  <header class="site">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="ProtoFlow home">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        ProtoFlow
+      </a>
+      <nav class="primary" aria-label="Primary">
+        <a href="workflow.html">Workflow</a>
+        <a href="features.html" aria-current="page">Features</a>
+        <a href="compare.html">Compare</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-single" id="features" aria-labelledby="features-title">
+          <div class="wrap">
+            <p class="eyebrow">Features</p>
+            <h2 id="features-title">What you get</h2>
+            <p class="lede" style="max-width:48ch;">Tools for the work you already do before layout.</p>
+            <div class="grid-3" style="margin-top:36px;">
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>
+                </div>
+                <h3>AI circuit generation</h3>
+                <p>Structured draft from a clear prompt—then iterate against datasheets, ratings, and pinouts like any generated artifact.</p>
+              </article>
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                </div>
+                <h3>Datasheet → symbol / footprint</h3>
+                <p>Cut pin-table transcription loops where models are supported. Always validate pads, thermal behavior, and pin-one orientation on the PDF.</p>
+              </article>
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </div>
+                <h3>Distributor component search</h3>
+                <p>One search surface across LCSC, DigiKey, and Mouser so MPNs land in the project instead of twenty browser tabs.</p>
+              </article>
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8H4l4.9 3.6-1.9 5.8 4.9-3.6 4.9 3.6-1.9-5.8 4.9-3.6H14L12 3z"/></svg>
+                </div>
+                <h3>Ctrl-U schematic cleanup</h3>
+                <p>Align and de-clutter selected regions so diff reviews focus on nets and blocks—not spaghetti geometry.</p>
+              </article>
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                </div>
+                <h3>KiCad / Altium export</h3>
+                <p>Bundled artifacts for the tools your org already uses for variants, simulation hooks, and manufacturing release.</p>
+              </article>
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <h3>Desktop / private workflow</h3>
+                <p>Designed for NDAs and lab policies: default path keeps IP off someone else’s infra until you choose otherwise.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+  </main>
+
+  <footer class="site">
+    <div class="footer-inner">
+      <span>© <span id="y"></span> ProtoFlow. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="docs.html">Documentation</a>
+        <a href="#">Privacy</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>
