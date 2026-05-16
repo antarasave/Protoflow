@@ -59,7 +59,7 @@ const download = stripPageSingle(
 );
 
 const mainContent = patchAnchors(
-  [hero, workflow, integration, features, docs, compare, faq, download]
+  [hero, workflow, integration, features, compare, docs, faq, download]
     .map((s) => "    " + s.trim().split("\n").join("\n    "))
     .join("\n\n")
 );
