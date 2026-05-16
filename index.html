@@ -3,42 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ProtoFlow is a desktop-first, AI-assisted schematic capture tool. Draft circuits faster, clean up nets, and export to KiCad or Altium—before PCB layout." />
-  <title>ProtoFlow — AI-assisted schematic capture for hardware engineers</title>
+  <meta name="description" content="ProtoFlow: desktop schematic capture with AI-assisted drafting, distributor-aware search, and KiCad/Altium export—before PCB layout." />
+  <title>ProtoFlow — Schematic capture for hardware teams</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg0: #000000;
-      --bg1: #0a0a0a;
-      --bg2: #141414;
-      --surface: #1a1a1a;
-      --border: rgba(255, 255, 255, 0.1);
-      --border-strong: rgba(255, 255, 255, 0.18);
-      --text: #ffffff;
-      --muted: #a3a3a3;
-      --dim: #737373;
-      --accent: #ffffff;
-      --accent-fg: #000000;
-      --accent-dim: rgba(255, 255, 255, 0.08);
-      --accent-glow: rgba(255, 255, 255, 0.1);
-      --accent2: #d4d4d4;
-      --blue: #38bdf8;
-      --blue-dim: rgba(56, 189, 248, 0.12);
-      --blue-glow: rgba(56, 189, 248, 0.28);
-      --ok: #ffffff;
-      --warn: #a3a3a3;
-      --radius: 12px;
-      --radius-sm: 8px;
-      --font-sans: "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+      --bg0: #09090b;
+      --bg1: #0c0c0f;
+      --bg2: #141418;
+      --surface: #18181c;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-strong: rgba(255, 255, 255, 0.12);
+      --text: #fafafa;
+      --muted: #a1a1aa;
+      --dim: #71717a;
+      --brand: #3b82f6;
+      --brand-hover: #60a5fa;
+      --brand-muted: rgba(59, 130, 246, 0.14);
+      --brand-border: rgba(59, 130, 246, 0.35);
+      --accent: #e4e4e7;
+      --accent-fg: #09090b;
+      --accent-dim: rgba(255, 255, 255, 0.05);
+      --accent2: #d4d4d8;
+      --blue: #3b82f6;
+      --blue-dim: rgba(59, 130, 246, 0.12);
+      --blue-glow: rgba(59, 130, 246, 0.15);
+      --ok: #fafafa;
+      --warn: #a1a1aa;
+      --radius: 10px;
+      --radius-sm: 6px;
+      --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, monospace;
-      --max: 1120px;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-      --wf-good: #4ade80;
-      --wf-good-dim: rgba(74, 222, 128, 0.12);
-      --wf-bad: #fb7185;
-      --wf-bad-dim: rgba(251, 113, 133, 0.1);
+      --max: 1080px;
+      --shadow-sm: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px rgba(0, 0, 0, 0.35);
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+      --space-section: clamp(72px, 10vw, 112px);
+      --prose: 52ch;
+      --wf-good: #22c55e;
+      --wf-good-dim: rgba(34, 197, 94, 0.1);
+      --wf-bad: #f87171;
+      --wf-bad-dim: rgba(248, 113, 113, 0.08);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -52,9 +58,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: var(--accent); text-underline-offset: 3px; }
+    a { color: var(--brand-hover); text-underline-offset: 3px; }
+    a:hover { color: #93c5fd; }
     a:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid var(--brand);
       outline-offset: 3px;
       border-radius: 4px;
     }
@@ -84,14 +91,20 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid var(--border);
-      background: color-mix(in srgb, var(--bg0) 88%, transparent);
-      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      background: color-mix(in srgb, var(--bg0) 92%, transparent);
+      backdrop-filter: blur(10px) saturate(1.2);
+      -webkit-backdrop-filter: blur(10px) saturate(1.2);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    header.site.is-scrolled {
+      border-bottom-color: var(--border);
+      background: color-mix(in srgb, var(--bg0) 96%, transparent);
     }
     .header-inner {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 14px 24px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -103,51 +116,57 @@
       gap: 10px;
       text-decoration: none;
       color: var(--text);
-      font-weight: 700;
+      font-weight: 600;
+      font-size: 15px;
       letter-spacing: -0.02em;
     }
     .brand:focus-visible { outline-offset: 4px; }
     .announce {
       text-align: center;
-      padding: 10px 24px;
-      font-size: 13px;
-      color: var(--muted);
+      padding: 8px 24px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.04em;
+      color: var(--dim);
       background: var(--bg1);
       border-bottom: 1px solid var(--border);
     }
     .announce strong {
-      color: var(--accent);
-      font-weight: 600;
+      color: var(--muted);
+      font-weight: 500;
       margin-right: 8px;
     }
 
     .brand-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--accent);
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      background: var(--bg2);
       display: grid;
       place-items: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      color: var(--accent-fg);
+      font-family: var(--font-mono);
+      color: var(--text);
       flex-shrink: 0;
     }
     nav.primary {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 2px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-    nav.primary a {
+    nav.primary a:not(.btn) {
       color: var(--muted);
       text-decoration: none;
-      font-size: 14px;
-      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 10px;
       border-radius: var(--radius-sm);
     }
-    nav.primary a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    nav.primary a:not(.btn):hover { color: var(--text); background: rgba(255,255,255,0.05); }
 
     .btn {
       display: inline-flex;
@@ -156,27 +175,27 @@
       gap: 8px;
       font-family: var(--font-sans);
       font-weight: 600;
-      font-size: 15px;
-      padding: 12px 20px;
+      font-size: 14px;
+      padding: 10px 18px;
       border-radius: var(--radius-sm);
       border: 1px solid transparent;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
     }
     .btn:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
     }
     .btn-primary {
-      background: var(--accent);
-      color: var(--accent-fg);
-      border-color: color-mix(in srgb, var(--accent) 70%, #fff);
-      box-shadow: none;
+      background: var(--brand);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-sm);
     }
     .btn-primary:hover {
-      background: #e5e5e5;
-      box-shadow: none;
+      background: var(--brand-hover);
+      border-color: rgba(255, 255, 255, 0.18);
     }
     .btn-secondary {
       background: transparent;
@@ -184,8 +203,8 @@
       border-color: var(--border-strong);
     }
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.18);
     }
     .btn-ghost {
       background: transparent;
@@ -198,76 +217,99 @@
 
     main { overflow-x: clip; }
     section {
-      padding: 88px 24px;
+      padding: var(--space-section) 24px;
       border-bottom: 1px solid var(--border);
     }
     .section-alt { background: var(--bg1); }
-    .section-muted { background: linear-gradient(180deg, var(--bg1), var(--bg0)); }
+    .section-muted {
+      background: var(--bg0);
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      background-position: center top;
+    }
     .wrap {
       max-width: var(--max);
       margin: 0 auto;
     }
     .eyebrow {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin: 0 0 12px;
+      color: var(--dim);
+      margin: 0 0 14px;
     }
     h1, h2, h3 {
       letter-spacing: -0.03em;
-      line-height: 1.15;
+      line-height: 1.14;
+      font-weight: 600;
     }
-    h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 700; margin: 0 0 16px; }
-    h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; margin: 0 0 12px; }
-    h3 { font-size: 1.1rem; font-weight: 600; margin: 0 0 8px; }
+    h1 { font-size: clamp(2rem, 4.2vw, 3.1rem); margin: 0 0 16px; }
+    h2 { font-size: clamp(1.35rem, 2.2vw, 1.85rem); margin: 0 0 12px; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 0 0 8px; }
     .lede {
-      font-size: 1.125rem;
+      font-size: 1.0625rem;
       color: var(--muted);
-      max-width: 52ch;
+      max-width: var(--prose);
       margin: 0 0 24px;
+      line-height: 1.6;
     }
     .muted { color: var(--muted); }
     .dim { color: var(--dim); font-size: 14px; }
 
     .hero {
-      padding-top: 64px;
-      padding-bottom: 96px;
-      background:
-        radial-gradient(ellipse 70% 55% at 50% 0%, var(--accent-glow), transparent 55%),
-        var(--bg0);
+      position: relative;
+      padding-top: 56px;
+      padding-bottom: var(--space-section);
+      background: var(--bg0);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse 65% 50% at 50% 0%, #000 20%, transparent 70%);
+      mask-image: radial-gradient(ellipse 65% 50% at 50% 0%, #000 20%, transparent 70%);
+      pointer-events: none;
     }
     .hero-stack {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 56px;
+      gap: 48px;
     }
     .hero-copy {
       text-align: center;
-      max-width: 820px;
+      max-width: 720px;
       width: 100%;
     }
     .hero-copy h1 {
-      font-size: clamp(2.5rem, 6.5vw, 4.5rem);
-      line-height: 1.08;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.15rem, 5vw, 3.35rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      font-weight: 600;
     }
     .hero-badge {
       display: inline-block;
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
-      padding: 6px 14px;
+      color: var(--dim);
+      padding: 5px 12px;
       border-radius: 999px;
-      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-      background: var(--accent-dim);
-      margin: 0 0 20px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg2);
+      margin: 0 0 16px;
     }
     .hero-copy .eyebrow { display: none; }
     .hero-copy .lede {
@@ -343,7 +385,7 @@
       font-family: var(--font-mono);
       font-size: 13px;
       font-weight: 600;
-      color: var(--blue);
+      color: var(--brand);
       white-space: nowrap;
     }
     .step-zero-table .step-title {
@@ -370,11 +412,11 @@
     .trust-line strong { color: var(--muted); font-weight: 500; }
 
     .ide-mock {
-      --ide-cycle: 10s;
-      border-radius: 16px;
+      --ide-cycle: 12s;
+      border-radius: var(--radius);
       border: 1px solid var(--border-strong);
       background: var(--bg2);
-      box-shadow: var(--shadow), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+      box-shadow: var(--shadow-sm);
       overflow: hidden;
     }
     .ide-chrome {
@@ -431,64 +473,57 @@
     @keyframes step-1 {
       0%, 22% {
         color: var(--text);
-        border-color: var(--blue);
-        background: var(--blue-dim);
+        border-color: var(--brand-border);
+        background: var(--brand-muted);
         font-weight: 600;
-        box-shadow: 0 0 16px var(--blue-glow);
       }
       23%, 100% {
         color: var(--dim);
         border-color: var(--border);
         background: transparent;
-        font-weight: 400;
-        box-shadow: none;
+        font-weight: 500;
       }
     }
     @keyframes step-2 {
       20%, 45% {
         color: var(--text);
-        border-color: var(--blue);
-        background: var(--blue-dim);
+        border-color: var(--brand-border);
+        background: var(--brand-muted);
         font-weight: 600;
-        box-shadow: 0 0 16px var(--blue-glow);
       }
       0%, 19%, 46%, 100% {
         color: var(--dim);
         border-color: var(--border);
         background: transparent;
-        font-weight: 400;
+        font-weight: 500;
       }
     }
     @keyframes step-3 {
       45%, 70% {
         color: var(--text);
-        border-color: var(--blue);
-        background: var(--blue-dim);
+        border-color: var(--brand-border);
+        background: var(--brand-muted);
         font-weight: 600;
-        box-shadow: 0 0 16px var(--blue-glow);
       }
       0%, 44%, 71%, 100% {
         color: var(--dim);
         border-color: var(--border);
         background: transparent;
-        font-weight: 400;
-        box-shadow: none;
+        font-weight: 500;
       }
     }
     @keyframes step-4 {
       70%, 96% {
         color: var(--text);
-        border-color: var(--blue);
-        background: var(--blue-dim);
+        border-color: var(--brand-border);
+        background: var(--brand-muted);
         font-weight: 600;
-        box-shadow: 0 0 16px var(--blue-glow);
       }
       0%, 69%, 97%, 100% {
         color: var(--dim);
         border-color: var(--border);
         background: transparent;
-        font-weight: 400;
-        box-shadow: none;
+        font-weight: 500;
       }
     }
     .ide-main {
@@ -499,11 +534,10 @@
       position: relative;
       padding: 10px 12px;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, var(--blue-dim), transparent 55%),
-        linear-gradient(rgba(255, 255, 255, 0.06) 0.5px, transparent 0.5px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0.5px, transparent 0.5px);
-      background-size: auto, 10px 10px, 10px 10px;
-      background-color: var(--bg0);
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 12px 12px;
+      background-color: #0a0a0c;
       overflow: hidden;
     }
     .ide-schematic {
@@ -533,7 +567,7 @@
       animation: draw-wire-aux var(--ide-cycle) ease-in-out infinite;
     }
     .ide-schematic .wire-rail {
-      stroke: rgba(56, 189, 248, 0.38);
+      stroke: rgba(59, 130, 246, 0.35);
       stroke-width: 1;
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
@@ -876,6 +910,115 @@
       .ide-log .line { opacity: 1; transform: none; }
     }
 
+    .problem-section {
+      background: var(--bg1);
+    }
+    .problem-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 36px;
+    }
+    @media (min-width: 900px) {
+      .problem-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    .problem-panel {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg2);
+      padding: 28px 24px;
+    }
+    .problem-panel h3 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin: 0 0 16px;
+    }
+    .problem-panel ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+    .problem-panel li {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+      padding-left: 18px;
+      position: relative;
+    }
+    .problem-panel li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 1px;
+      background: var(--dim);
+    }
+    .problem-panel strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg2);
+      padding: 28px 24px;
+      margin-top: 40px;
+    }
+    .trust-band h3 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin: 0 0 18px;
+    }
+    .logo-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .logo-chip {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg0);
+    }
+    .metrics-row {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .metric-item strong {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .metric-item span {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.4;
+    }
+
     .grid-2 {
       display: grid;
       gap: 20px;
@@ -901,16 +1044,20 @@
     .card h3 { margin-top: 4px; }
     .card p { margin: 0; font-size: 15px; color: var(--muted); }
     .card-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--accent-dim);
-      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-muted);
+      border: 1px solid var(--brand-border);
       display: grid;
       place-items: center;
-      font-family: var(--font-mono);
-      font-size: 18px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      color: var(--brand-hover);
+    }
+    .card-icon svg {
+      width: 18px;
+      height: 18px;
+      display: block;
     }
 
     .steps {
@@ -969,8 +1116,8 @@
       position: relative;
       overflow: hidden;
       background: var(--bg0);
-      padding-top: 96px;
-      padding-bottom: 96px;
+      padding-top: var(--space-section);
+      padding-bottom: var(--space-section);
     }
     .section-workflow-premium::before {
       content: "";
@@ -990,7 +1137,7 @@
       z-index: 1;
       max-width: min(var(--max), 1180px);
     }
-    .wf-header .eyebrow { color: var(--blue); }
+    .wf-header .eyebrow { color: var(--brand-hover); }
     .section-workflow-premium #workflow-title {
       font-size: clamp(1.75rem, 3.5vw, 2.6rem);
       max-width: 22ch;
@@ -1025,9 +1172,9 @@
       color: var(--muted);
     }
     .wf-metric-strip .wf-metric-hot {
-      border-color: rgba(56, 189, 248, 0.35);
-      color: var(--blue);
-      background: var(--blue-dim);
+      border-color: var(--brand-border);
+      color: var(--brand-hover);
+      background: var(--brand-muted);
     }
     .wf-pipeline-sticky {
       position: sticky;
@@ -1084,8 +1231,8 @@
       }
     }
     .wf-step-card:hover {
-      border-color: rgba(56, 189, 248, 0.42);
-      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.08), 0 22px 52px rgba(0, 0, 0, 0.5);
+      border-color: var(--brand-border);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.06), 0 16px 40px rgba(0, 0, 0, 0.35);
     }
     .wf-step-top {
       display: flex;
@@ -1099,17 +1246,17 @@
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.12em;
-      color: var(--blue);
+      color: var(--brand-hover);
     }
     .wf-icon {
       width: 36px;
       height: 36px;
-      border-radius: 10px;
+      border-radius: var(--radius-sm);
       display: grid;
       place-items: center;
-      background: var(--blue-dim);
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      color: var(--blue);
+      background: var(--brand-muted);
+      border: 1px solid var(--brand-border);
+      color: var(--brand-hover);
       flex-shrink: 0;
     }
     .wf-icon svg { width: 18px; height: 18px; display: block; }
@@ -1166,7 +1313,7 @@
       width: 2px;
       height: 28px;
       border-radius: 2px;
-      background: linear-gradient(180deg, transparent, var(--blue), transparent);
+      background: linear-gradient(180deg, transparent, var(--brand), transparent);
       background-size: 100% 200%;
       animation: wf-join-flow-v 2.2s linear infinite;
     }
@@ -1175,7 +1322,7 @@
         width: 100%;
         min-width: 16px;
         height: 2px;
-        background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        background: linear-gradient(90deg, transparent, var(--brand), transparent);
         background-size: 200% 100%;
         animation: wf-join-flow-h 2.2s linear infinite;
       }
@@ -1212,11 +1359,11 @@
     }
     .wf-trust li::before {
       content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--blue);
-      box-shadow: 0 0 10px var(--blue-glow);
+      width: 5px;
+      height: 5px;
+      border-radius: 1px;
+      background: var(--brand);
+      box-shadow: none;
       flex-shrink: 0;
     }
     .wf-cta-row {
@@ -1231,28 +1378,30 @@
       position: relative;
       overflow: hidden;
       background: var(--bg1);
-      padding-top: 88px;
-      padding-bottom: 88px;
+      padding-top: var(--space-section);
+      padding-bottom: var(--space-section);
     }
     .section-compare-premium::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 55% 45% at 50% 0%, var(--blue-dim), transparent 58%);
+      background: radial-gradient(ellipse 50% 40% at 50% 0%, var(--brand-muted), transparent 55%);
       pointer-events: none;
-      opacity: 0.55;
+      opacity: 0.5;
     }
     .section-compare-premium .wrap {
       position: relative;
       z-index: 1;
       max-width: min(var(--max), 1180px);
     }
-    .section-compare-premium #compare-title {
+    .section-compare-premium #compare-title,
+    .compare-title {
       font-size: clamp(1.65rem, 3.2vw, 2.35rem);
       line-height: 1.15;
-      letter-spacing: -0.02em;
-      max-width: 32ch;
+      letter-spacing: -0.03em;
+      max-width: 24ch;
     }
+    .compare-title-break { display: inline; }
     .compare-lede {
       font-size: clamp(1.02rem, 1.35vw, 1.15rem);
       color: var(--muted);
@@ -1298,8 +1447,8 @@
     }
     .compare-matrix .th-proto {
       position: relative;
-      background: linear-gradient(180deg, rgba(56, 189, 248, 0.14) 0%, rgba(56, 189, 248, 0.04) 48%, transparent 100%);
-      box-shadow: inset 1px 0 0 rgba(56, 189, 248, 0.12), inset -1px 0 0 rgba(56, 189, 248, 0.12);
+      background: linear-gradient(180deg, var(--brand-muted) 0%, transparent 55%);
+      box-shadow: inset 1px 0 0 rgba(59, 130, 246, 0.12), inset -1px 0 0 rgba(59, 130, 246, 0.12);
       color: var(--text);
     }
     .compare-matrix .th-proto-inner {
@@ -1311,7 +1460,7 @@
     }
     .compare-matrix .th-proto-icon {
       display: inline-flex;
-      color: var(--blue);
+      color: var(--brand-hover);
     }
     .compare-matrix .th-proto-icon svg { display: block; width: 18px; height: 18px; }
     .compare-matrix .badge-free {
@@ -1350,8 +1499,8 @@
       border-bottom: none;
     }
     .compare-matrix td.td-proto {
-      background: linear-gradient(180deg, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0.02) 100%);
-      box-shadow: inset 1px 0 0 rgba(56, 189, 248, 0.1), inset -1px 0 0 rgba(56, 189, 248, 0.1);
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, rgba(59, 130, 246, 0.02) 100%);
+      box-shadow: inset 1px 0 0 rgba(59, 130, 246, 0.1), inset -1px 0 0 rgba(59, 130, 246, 0.1);
     }
     .compare-matrix .cell-stack {
       display: flex;
@@ -1384,7 +1533,7 @@
       background: rgba(255, 255, 255, 0.02);
     }
     .compare-matrix tbody tr:hover td.td-proto {
-      background: linear-gradient(180deg, rgba(56, 189, 248, 0.12) 0%, rgba(56, 189, 248, 0.04) 100%);
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.04) 100%);
     }
 
     .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -1429,14 +1578,15 @@
     }
 
     .media-placeholder {
-      border: 1px dashed var(--border-strong);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 48px 24px;
-      text-align: center;
+      padding: 40px 24px;
+      text-align: left;
       color: var(--dim);
       font-family: var(--font-mono);
-      font-size: 13px;
-      background: var(--bg0);
+      font-size: 12px;
+      line-height: 1.5;
+      background: var(--bg2);
     }
     .media-placeholder strong { color: var(--muted); display: block; margin-bottom: 8px; font-family: var(--font-sans); }
 
@@ -1460,13 +1610,14 @@
       color: var(--muted);
       text-align: center;
     }
-    .flow-box em { color: var(--accent); font-style: normal; }
+    .flow-box em { color: var(--brand-hover); font-style: normal; font-weight: 500; }
     .flow-arrow { text-align: center; color: var(--dim); }
 
     .footer-cta {
       text-align: center;
-      padding: 96px 24px;
-      background: radial-gradient(ellipse 60% 40% at 50% 100%, var(--accent-dim), transparent), var(--bg0);
+      padding: var(--space-section) 24px;
+      background: var(--bg1);
+      border-bottom: 1px solid var(--border);
     }
     .footer-cta h2 { margin-bottom: 12px; }
     .footer-cta .lede { margin-left: auto; margin-right: auto; }
@@ -1519,11 +1670,12 @@
         ProtoFlow
       </a>
       <nav class="primary" aria-label="Primary">
+        <a href="#problem">Problem</a>
         <a href="#workflow">Workflow</a>
         <a href="#features">Features</a>
         <a href="#compare">Compare</a>
         <a href="#faq">FAQ</a>
-        <a class="btn btn-secondary" href="#docs">Read docs</a>
+        <a class="btn btn-secondary" href="#docs">Documentation</a>
         <a class="btn btn-primary" href="#download">Download</a>
       </nav>
     </div>
@@ -1533,17 +1685,17 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-stack">
         <div class="hero-copy">
-          <p class="hero-badge">Early Access Preview</p>
-          <p class="eyebrow">Step zero — before PCB layout</p>
-          <h1 id="hero-title">Schematics shouldn't be this hard.</h1>
+          <p class="hero-badge">Early access</p>
+          <p class="eyebrow">Step zero for electronics design</p>
+          <h1 id="hero-title">Ship schematics faster—before you open your EDA layout tool.</h1>
           <p class="lede">
-            The AI-native companion that handles the boring parts of EDA so you don't have to.
+            ProtoFlow is a desktop-first assistant for schematic capture: structured intent in, reviewed sheets out, then a clean handoff to KiCad or Altium. Not a PCB editor. Not a cloud IP surface by default.
           </p>
           <div class="cta-row">
-            <a class="btn btn-secondary" href="#workflow">See how it works</a>
-            <a class="btn btn-primary" href="#download">Download for Desktop</a>
+            <a class="btn btn-secondary" href="#problem">Why teams switch</a>
+            <a class="btn btn-primary" href="#download">Download for desktop</a>
           </div>
-          <p class="trust-line"><strong>No credit card required.</strong> Your design files stay on your machine.</p>
+          <p class="trust-line"><strong>Free to start.</strong> No payment on file. Projects stay on your machine.</p>
         </div>
         <div class="ide-mock hero-preview" role="img" aria-label="Animated ProtoFlow IDE: import parts, generate circuit, cleanup layout, export to KiCad or Altium">
           <div class="ide-chrome">
@@ -1653,9 +1805,9 @@
         </div>
 
         <div class="step-zero-workflow" aria-labelledby="step-zero-title">
-          <h2 id="step-zero-title" class="step-zero-heading">Your &lsquo;Step Zero&rsquo; Workflow</h2>
+          <h2 id="step-zero-title" class="step-zero-heading">End-to-end flow</h2>
           <p class="step-zero-tagline">
-            Create in ProtoFlow &rarr; Export to KiCad/Altium for Layout &rarr; Save weeks of work.
+            Capture and refine in ProtoFlow, then export for layout where DRC and release already live.
           </p>
           <div class="step-zero-wrap">
             <table class="step-zero-table" aria-labelledby="step-zero-title">
@@ -1695,13 +1847,68 @@
       </div>
     </section>
 
+    <section id="problem" class="problem-section" aria-labelledby="problem-title">
+      <div class="wrap">
+        <p class="eyebrow">Problem</p>
+        <h2 id="problem-title">Schematic capture is where velocity dies</h2>
+        <p class="lede" style="max-width:56ch;">
+          Every board still passes through a netlist. The question is how much manual work you spend before layout—not whether capture exists.
+        </p>
+        <div class="problem-grid">
+          <div class="problem-panel">
+            <h3>Traditional bottlenecks</h3>
+            <ul>
+              <li>Symbol and pin creation from PDFs, repeated across MPNs and variants.</li>
+              <li>Library fragmentation across distributors, spreadsheets, and one-off hacks.</li>
+              <li>Sheet cleanup after every review cycle—readable schematics lag behind scratch sheets.</li>
+              <li>Context switches between browser, notes, and EDA instead of design decisions.</li>
+            </ul>
+          </div>
+          <div class="problem-panel problem-panel--resolve">
+            <h3>What ProtoFlow optimizes</h3>
+            <ul>
+              <li><strong>Intent-first capture</strong> — describe blocks and interfaces; draft structure programmatically.</li>
+              <li><strong>Sourcing-aware workflow</strong> — LCSC, DigiKey, and Mouser search unified with the same project files.</li>
+              <li><strong>One-shot cleanup passes</strong> — Ctrl-U style layout so reviewers read intent, not clutter.</li>
+              <li><strong>Explicit export</strong> — bundle handoff to KiCad or Altium; layout and sign-off stay in your main toolchain.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="trust-band" aria-labelledby="trust-title">
+          <h3 id="trust-title">Built for engineers who need control</h3>
+          <div class="logo-strip" aria-label="Ecosystem integration focus">
+            <span class="logo-chip">Offline-first desktop</span>
+            <span class="logo-chip">KiCad bundle export</span>
+            <span class="logo-chip">Altium handoff</span>
+            <span class="logo-chip">No default cloud IP path</span>
+            <span class="logo-chip">LCSC · DigiKey · Mouser</span>
+          </div>
+          <div class="metrics-row">
+            <div class="metric-item">
+              <strong>&lt; 1 min</strong>
+              <span>Typical first-pass AI draft for medium-complexity blocks—then engineer review.</span>
+            </div>
+            <div class="metric-item">
+              <strong>100% local</strong>
+              <span>Design files remain on disk for the desktop workflow; ship air-gapped if your policy requires it.</span>
+            </div>
+            <div class="metric-item">
+              <strong>2 EDA targets</strong>
+              <span>Export pipeline focused on KiCad and Altium—not another layout editor.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="workflow" class="section-workflow-premium" aria-labelledby="workflow-title">
       <div class="wrap wf-wrap">
         <header class="wf-header">
-          <p class="eyebrow">Step zero · electronics design</p>
-          <h2 id="workflow-title">From prompt to layout-ready schematic in minutes</h2>
+          <p class="eyebrow">Workflow</p>
+          <h2 id="workflow-title">From prompt to exportable schematic</h2>
           <p class="wf-subtitle">
-            <strong>Eliminate repetitive schematic capture.</strong> Your engineering workflow, compressed: intent in, structured sheets out—then hand off to KiCad or Altium for placement, DRC, and release. AI output is a first draft; review and sign-off stay yours.
+            Five stages, one desktop project: describe intent, generate structure, clean sheets, review with ERC in mind, export for layout. AI assists capture—you own correctness and release.
           </p>
           <div class="wf-metric-strip" aria-label="Workflow highlights">
             <span class="wf-metric-hot">Minutes vs. hours per iteration</span>
@@ -1815,9 +2022,9 @@
     <section class="section-muted" aria-labelledby="fits-title">
       <div class="wrap">
         <p class="eyebrow">Integration</p>
-        <h2 id="fits-title">How ProtoFlow fits into your existing workflow</h2>
-        <p class="lede" style="max-width:58ch;">
-          It does not replace KiCad or Altium. It sits upstream: faster capture and library prep, then normal EDA tooling for layout, simulation hooks, and manufacturing outputs.
+        <h2 id="fits-title">Where ProtoFlow sits in your stack</h2>
+        <p class="lede" style="max-width:52ch;">
+          Upstream of layout: intent, library glue, and schematic structure. Downstream unchanged—DRC, mechanical, and factory outputs stay in KiCad or Altium.
         </p>
         <div class="flow-diagram" style="margin-top:36px;">
           <div class="flow-box">Requirements &amp; block diagram<br /><em>ProtoFlow</em></div>
@@ -1832,38 +2039,50 @@
     <section id="features" aria-labelledby="features-title">
       <div class="wrap">
         <p class="eyebrow">Features</p>
-        <h2 id="features-title">Features</h2>
-        <p class="lede" style="max-width:56ch;"><strong>Built for schematic velocity and library work.</strong> Each feature targets a concrete step in capture—not generic “AI for everything.”</p>
+        <h2 id="features-title">Concrete tools for capture and library work</h2>
+        <p class="lede" style="max-width:56ch;">Each capability maps to a step you already do in KiCad or Altium—only faster upstream, before placement.</p>
         <div class="grid-3" style="margin-top:36px;">
           <article class="card">
-            <div class="card-icon" aria-hidden="true">⌁</div>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>
+            </div>
             <h3>AI circuit generation</h3>
-            <p>Turn a description into an editable starting schematic. Expect iteration: treat output as a draft you verify against datasheets and design rules.</p>
+            <p>Structured draft from a clear prompt—then iterate against datasheets, ratings, and pinouts like any generated artifact.</p>
           </article>
           <article class="card">
-            <div class="card-icon" aria-hidden="true">§</div>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            </div>
             <h3>Datasheet → symbol / footprint</h3>
-            <p>Reduce manual pin extraction by importing from datasheet-derived inputs where supported. Always validate pinouts and thermal pads against the PDF.</p>
+            <p>Cut pin-table transcription loops where models are supported. Always validate pads, thermal behavior, and pin-one orientation on the PDF.</p>
           </article>
           <article class="card">
-            <div class="card-icon" aria-hidden="true">◇</div>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
             <h3>Distributor component search</h3>
-            <p>Search by MPN and key attributes to attach real parts early—before you lose an afternoon tab-hopping between sites.</p>
+            <p>One search surface across LCSC, DigiKey, and Mouser so MPNs land in the project instead of twenty browser tabs.</p>
           </article>
           <article class="card">
-            <div class="card-icon" aria-hidden="true">⌘</div>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8H4l4.9 3.6-1.9 5.8 4.9-3.6 4.9 3.6-1.9-5.8 4.9-3.6H14L12 3z"/></svg>
+            </div>
             <h3>Ctrl-U schematic cleanup</h3>
-            <p>Tighten readability: spacing, alignment, and label consistency so reviewers (and future you) can parse the sheet fast.</p>
+            <p>Align and de-clutter selected regions so diff reviews focus on nets and blocks—not spaghetti geometry.</p>
           </article>
           <article class="card">
-            <div class="card-icon" aria-hidden="true">⎘</div>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </div>
             <h3>KiCad / Altium export</h3>
-            <p>Move the reviewed schematic into your primary EDA tool for layout, collaboration, and release artifacts.</p>
+            <p>Bundled artifacts for the tools your org already uses for variants, simulation hooks, and manufacturing release.</p>
           </article>
           <article class="card">
-            <div class="card-icon" aria-hidden="true">⏻</div>
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
             <h3>Desktop / private workflow</h3>
-            <p>Work offline-first with local projects. Good for NDAs, air-gapped labs, and teams that do not want cloud-only IP paths.</p>
+            <p>Designed for NDAs and lab policies: default path keeps IP off someone else’s infra until you choose otherwise.</p>
           </article>
         </div>
       </div>
@@ -1871,17 +2090,17 @@
 
     <section id="docs" class="section-alt" aria-labelledby="docs-title">
       <div class="wrap">
-        <p class="eyebrow">Docs</p>
-        <h2 id="docs-title">Docs &amp; resources</h2>
-        <p class="lede">Proof points, media placeholders, and links to documentation and community—replace these blocks with a short demo video, annotated screenshots, and GIFs of export + cleanup.</p>
+        <p class="eyebrow">Evidence</p>
+        <h2 id="docs-title">Documentation and proof</h2>
+        <p class="lede" style="max-width:54ch;">Replace placeholders with a two-minute screen capture, annotated stills of export and Ctrl-U, and versioned release notes—engineers trust what they can verify.</p>
         <div class="grid-2" style="margin-top:28px;">
           <div class="media-placeholder" role="status">
-            <strong>Demo video embed</strong>
-            Add YouTube/Vimeo or self-hosted MP4 (poster frame + captions).
+            <strong style="font-family:var(--font-sans);color:var(--muted);display:block;margin-bottom:10px;font-size:14px;">Product walkthrough</strong>
+            Embed MP4 or YouTube with captions. Show: import → generate → Ctrl-U → export dialog.
           </div>
           <div class="media-placeholder" role="status">
-            <strong>Screenshots / GIFs</strong>
-            Library import, AI draft, Ctrl-U cleanup, export dialog.
+            <strong style="font-family:var(--font-sans);color:var(--muted);display:block;margin-bottom:10px;font-size:14px;">Screenshots</strong>
+            Static frames for library search, net highlight, and KiCad bundle contents on disk.
           </div>
         </div>
         <div class="grid-2" style="margin-top:20px;">
@@ -1912,7 +2131,7 @@
     <section id="compare" class="section-compare-premium" aria-labelledby="compare-title">
       <div class="wrap">
         <p class="eyebrow">Why ProtoFlow Wins</p>
-        <h2 id="compare-title">Built Different.Built Better.</h2>
+        <h2 id="compare-title" class="compare-title">Built Different.<span class="compare-title-break"> </span>Built Better.</h2>
         <p class="compare-lede" style="margin-top:14px;">
           See how ProtoFlow stacks up against Flux AI and traditional EDA tools.
         </p>
@@ -2093,7 +2312,7 @@
       <div class="wrap">
         <p class="eyebrow">Who it’s for</p>
         <h2 id="usecases-title">Use cases</h2>
-        <p class="lede" style="max-width:54ch;">Same tool, different urgency: faster iteration before you lock the netlist for layout.</p>
+        <p class="lede" style="max-width:50ch;">Same workflow discipline—student teams, startups, and integrators all compress capture before locking the netlist.</p>
         <div class="pill-row" style="margin-top:28px;">
           <span class="pill">Student design teams</span>
           <span class="pill">Hardware startups</span>
@@ -2136,13 +2355,13 @@
     <section class="footer-cta" id="download" aria-labelledby="final-cta-title">
       <div class="wrap">
         <p class="eyebrow">Download</p>
-        <h2 id="final-cta-title">Download ProtoFlow</h2>
-        <p class="lede">Install the desktop build, open a sample project, and run through describe → export in under thirty minutes.</p>
+        <h2 id="final-cta-title">Install ProtoFlow</h2>
+        <p class="lede" style="max-width:48ch;margin-left:auto;margin-right:auto;">Desktop build, local project files. Run one sample flow end-to-end before you standardize on export for a program.</p>
         <div class="cta-row" style="justify-content:center;margin-top:8px;">
-          <a class="btn btn-primary" href="#download">Download ProtoFlow</a>
-          <a class="btn btn-secondary" href="#workflow">See workflow</a>
+          <a class="btn btn-primary" href="#download">Download</a>
+          <a class="btn btn-secondary" href="#workflow">Technical workflow</a>
         </div>
-        <p class="trust-line" style="margin:20px auto 0; text-align:center;"><strong>No credit card required.</strong> Desktop-first; design files stay local.</p>
+        <p class="trust-line" style="margin:20px auto 0; text-align:center;"><strong>No credit card on file.</strong> Offline-first path; you control what leaves the workstation.</p>
       </div>
     </section>
   </main>
@@ -2151,7 +2370,7 @@
     <div class="footer-inner">
       <span>© <span id="y"></span> ProtoFlow. All rights reserved.</span>
       <div class="footer-links">
-        <a href="#docs">Docs (placeholder)</a>
+        <a href="#docs">Documentation</a>
         <a href="#">Privacy</a>
         <a href="#">Security</a>
       </div>
@@ -2160,6 +2379,16 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+    (function () {
+      var header = document.querySelector("header.site");
+      if (header) {
+        function onScroll() {
+          header.classList.toggle("is-scrolled", window.scrollY > 8);
+        }
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      }
+    })();
     (function () {
       var cards = document.querySelectorAll(".wf-step-card");
       if (!cards.length) return;
