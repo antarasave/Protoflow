@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ProtoFlow: desktop schematic capture with AI-assisted drafting, distributor-aware search, and KiCad/Altium export—before PCB layout." />
+  <meta name="description" content="ProtoFlow: desktop schematic capture. Draft from a prompt, edit, export to KiCad or Altium." />
   <title>ProtoFlow — Schematic capture for hardware teams</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -191,7 +191,7 @@
       background: var(--brand);
       color: #fff;
       border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: var(--shadow-sm);
+      box-shadow: none;
     }
     .btn-primary:hover {
       background: var(--brand-hover);
@@ -221,14 +221,7 @@
       border-bottom: 1px solid var(--border);
     }
     .section-alt { background: var(--bg1); }
-    .section-muted {
-      background: var(--bg0);
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 64px 64px;
-      background-position: center top;
-    }
+    .section-muted { background: var(--bg1); }
     .wrap {
       max-width: var(--max);
       margin: 0 auto;
@@ -266,18 +259,7 @@
       padding-bottom: var(--space-section);
       background: var(--bg0);
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
-      background-size: 48px 48px;
-      -webkit-mask-image: radial-gradient(ellipse 65% 50% at 50% 0%, #000 20%, transparent 70%);
-      mask-image: radial-gradient(ellipse 65% 50% at 50% 0%, #000 20%, transparent 70%);
-      pointer-events: none;
-    }
+    .hero::before { display: none; }
     .hero-stack {
       position: relative;
       z-index: 1;
@@ -1043,22 +1025,7 @@
     }
     .card h3 { margin-top: 4px; }
     .card p { margin: 0; font-size: 15px; color: var(--muted); }
-    .card-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-sm);
-      background: var(--brand-muted);
-      border: 1px solid var(--brand-border);
-      display: grid;
-      place-items: center;
-      margin-bottom: 12px;
-      color: var(--brand-hover);
-    }
-    .card-icon svg {
-      width: 18px;
-      height: 18px;
-      display: block;
-    }
+    .card-icon { display: none; }
 
     .steps {
       display: grid;
@@ -1112,267 +1079,59 @@
     .compare .yes { color: var(--ok); font-family: var(--font-mono); }
     .compare .partial { color: var(--warn); font-family: var(--font-mono); }
 
-    .section-workflow-premium {
-      position: relative;
-      overflow: hidden;
-      background: var(--bg0);
-      padding-top: var(--space-section);
-      padding-bottom: var(--space-section);
-    }
-    .section-workflow-premium::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-      -webkit-mask-image: radial-gradient(ellipse 72% 55% at 50% 18%, #000 15%, transparent 65%);
-      mask-image: radial-gradient(ellipse 72% 55% at 50% 18%, #000 15%, transparent 65%);
-      pointer-events: none;
-    }
-    .wf-header { margin-bottom: 6px; }
-    .wf-wrap {
-      position: relative;
-      z-index: 1;
-      max-width: min(var(--max), 1180px);
-    }
-    .wf-header .eyebrow { color: var(--brand-hover); }
-    .section-workflow-premium #workflow-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
-      max-width: 22ch;
-      line-height: 1.12;
-    }
-    .wf-subtitle {
-      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-      color: var(--muted);
-      max-width: 60ch;
-      line-height: 1.6;
-      margin: 0 0 8px;
-    }
-    .wf-subtitle strong { color: var(--text); font-weight: 600; }
-    .wf-metric-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 16px;
-      margin: 20px 0 28px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .wf-metric-strip span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--muted);
-    }
-    .wf-metric-strip .wf-metric-hot {
-      border-color: var(--brand-border);
-      color: var(--brand-hover);
-      background: var(--brand-muted);
-    }
-    .wf-pipeline-sticky {
-      position: sticky;
-      top: 56px;
-      z-index: 5;
-      margin: 0 -12px;
-      padding: 10px 12px 20px;
-      background: linear-gradient(180deg, color-mix(in srgb, var(--bg0) 94%, transparent) 40%, transparent);
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      border-radius: 0 0 var(--radius) var(--radius);
-    }
-    @media (max-width: 1099px) {
-      .wf-pipeline-sticky {
-        position: relative;
-        top: auto;
-        margin: 0;
-        padding: 0 0 8px;
-        background: none;
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
-      }
-    }
-    .wf-pipeline {
-      display: flex;
-      flex-direction: column;
+    #workflow { background: var(--bg0); }
+    .workflow-steps {
       list-style: none;
-      margin: 0;
+      margin: 36px 0 0;
       padding: 0;
-      gap: 0;
+      max-width: 560px;
     }
-    @media (min-width: 1100px) {
-      .wf-pipeline { flex-direction: row; align-items: stretch; }
-    }
-    .wf-step-card {
-      flex: 1 1 0;
-      min-width: 0;
-      padding: 18px 16px 20px;
-      border-radius: 14px;
-      border: 1px solid var(--border-strong);
-      background: linear-gradient(165deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.99) 100%);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.5s ease, translate 0.55s ease;
-      transition-delay: 0s, 0s, var(--wf-delay, 0ms), var(--wf-delay, 0ms);
-      opacity: 0;
-      translate: 0 20px;
-    }
-    .wf-step-card.is-inview { opacity: 1; translate: 0 0; }
-    @media (prefers-reduced-motion: reduce) {
-      .wf-step-card {
-        opacity: 1;
-        translate: none;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      }
-    }
-    .wf-step-card:hover {
-      border-color: var(--brand-border);
-      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.06), 0 16px 40px rgba(0, 0, 0, 0.35);
-    }
-    .wf-step-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .wf-step-idx {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: var(--brand-hover);
-    }
-    .wf-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-sm);
+    .workflow-steps li {
       display: grid;
-      place-items: center;
-      background: var(--brand-muted);
-      border: 1px solid var(--brand-border);
-      color: var(--brand-hover);
-      flex-shrink: 0;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .wf-icon svg { width: 18px; height: 18px; display: block; }
-    .wf-step-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 0 0 4px;
-      letter-spacing: -0.02em;
-    }
-    .wf-step-hook {
-      font-size: 13px;
-      color: var(--dim);
-      margin: 0 0 14px;
-      line-height: 1.45;
-    }
-    .wf-io {
-      margin: 0;
-      padding: 12px 0 0;
-      border-top: 1px solid var(--border);
-      display: grid;
-      gap: 10px;
-    }
-    .wf-io-row { margin: 0; }
-    .wf-io-row dt {
+    .workflow-steps li:last-child { border-bottom: none; }
+    .workflow-num {
       font-family: var(--font-mono);
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      font-size: 12px;
       color: var(--dim);
-      margin: 0 0 4px;
+      padding-top: 3px;
     }
-    .wf-io-row dd {
+    .workflow-steps h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .workflow-steps p {
       margin: 0;
-      font-size: 13px;
-      line-height: 1.45;
+      font-size: 15px;
       color: var(--muted);
+      line-height: 1.55;
     }
-    .wf-join {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 0;
-      flex-shrink: 0;
-    }
-    @media (min-width: 1100px) {
-      .wf-join {
-        width: 28px;
-        padding: 0 4px;
-        align-self: center;
-      }
-    }
-    .wf-join-line {
-      width: 2px;
-      height: 28px;
-      border-radius: 2px;
-      background: linear-gradient(180deg, transparent, var(--brand), transparent);
-      background-size: 100% 200%;
-      animation: wf-join-flow-v 2.2s linear infinite;
-    }
-    @media (min-width: 1100px) {
-      .wf-join-line {
-        width: 100%;
-        min-width: 16px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--brand), transparent);
-        background-size: 200% 100%;
-        animation: wf-join-flow-h 2.2s linear infinite;
-      }
-    }
-    @keyframes wf-join-flow-h {
-      0% { background-position: 100% 0; }
-      100% { background-position: -100% 0; }
-    }
-    @keyframes wf-join-flow-v {
-      0% { background-position: 0 100%; }
-      100% { background-position: 0 -100%; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .wf-join-line { animation: none; opacity: 0.5; }
-    }
-    .wf-trust {
-      list-style: none;
+    .workflow-note {
       margin: 28px 0 0;
+      font-size: 14px;
+      color: var(--dim);
+      max-width: 48ch;
+    }
+    .workflow-actions { margin-top: 24px; }
+    .trust-facts {
+      margin: 40px 0 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--dim);
+      max-width: 56ch;
+    }
+    .problem-panel {
       padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 14px;
+      border: none;
+      background: none;
     }
-    .wf-trust li {
-      font-size: 13px;
-      color: var(--muted);
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.02);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .wf-trust li::before {
-      content: "";
-      width: 5px;
-      height: 5px;
-      border-radius: 1px;
-      background: var(--brand);
-      box-shadow: none;
-      flex-shrink: 0;
-    }
-    .wf-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-top: 32px;
-    }
+    .step-zero-workflow { display: none; }
+    .ide-mock .ide-pipeline li,
+    .ide-mock .ide-schematic *,
+    .ide-mock .ide-log .line,
+    .ide-mock .ide-log .cursor { animation: none !important; }
 
     .section-compare-premium {
       position: relative;
@@ -1381,14 +1140,7 @@
       padding-top: var(--space-section);
       padding-bottom: var(--space-section);
     }
-    .section-compare-premium::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 50% 40% at 50% 0%, var(--brand-muted), transparent 55%);
-      pointer-events: none;
-      opacity: 0.5;
-    }
+    .section-compare-premium::before { display: none; }
     .section-compare-premium .wrap {
       position: relative;
       z-index: 1;
@@ -1446,9 +1198,8 @@
       color: var(--dim);
     }
     .compare-matrix .th-proto {
-      position: relative;
-      background: linear-gradient(180deg, var(--brand-muted) 0%, transparent 55%);
-      box-shadow: inset 1px 0 0 rgba(59, 130, 246, 0.12), inset -1px 0 0 rgba(59, 130, 246, 0.12);
+      background: transparent;
+      box-shadow: none;
       color: var(--text);
     }
     .compare-matrix .th-proto-inner {
@@ -1499,8 +1250,8 @@
       border-bottom: none;
     }
     .compare-matrix td.td-proto {
-      background: linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, rgba(59, 130, 246, 0.02) 100%);
-      box-shadow: inset 1px 0 0 rgba(59, 130, 246, 0.1), inset -1px 0 0 rgba(59, 130, 246, 0.1);
+      background: var(--bg2);
+      box-shadow: none;
     }
     .compare-matrix .cell-stack {
       display: flex;
@@ -1659,8 +1410,8 @@
   <a class="skip" href="#main">Skip to content</a>
 
   <div class="announce" role="region" aria-label="Early access">
-    <strong>Early Access Preview</strong>
-    <span>Free to get started — no credit card required.</span>
+    <strong>Early access</strong>
+    <span>Free to start. No credit card.</span>
   </div>
 
   <header class="site">
@@ -1670,12 +1421,10 @@
         ProtoFlow
       </a>
       <nav class="primary" aria-label="Primary">
-        <a href="#problem">Problem</a>
         <a href="#workflow">Workflow</a>
         <a href="#features">Features</a>
         <a href="#compare">Compare</a>
         <a href="#faq">FAQ</a>
-        <a class="btn btn-secondary" href="#docs">Documentation</a>
         <a class="btn btn-primary" href="#download">Download</a>
       </nav>
     </div>
@@ -1685,19 +1434,17 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-stack">
         <div class="hero-copy">
-          <p class="hero-badge">Early access</p>
-          <p class="eyebrow">Step zero for electronics design</p>
           <h1 id="hero-title">Schematics shouldn&rsquo;t be this hard</h1>
           <p class="lede">
-            ProtoFlow is a desktop-first assistant for schematic capture: structured intent in, reviewed sheets out, then a clean handoff to KiCad or Altium. Not a PCB editor. Not a cloud IP surface by default.
+            ProtoFlow is a desktop app for schematic capture. Describe a circuit, get a draft you can edit, export to KiCad or Altium for layout. Files stay on your machine.
           </p>
           <div class="cta-row">
-            <a class="btn btn-secondary" href="#problem">Why teams switch</a>
-            <a class="btn btn-primary" href="#download">Download for desktop</a>
+            <a class="btn btn-primary" href="#download">Download</a>
+            <a class="btn btn-secondary" href="#workflow">How it works</a>
           </div>
-          <p class="trust-line"><strong>Free to start.</strong> No payment on file. Projects stay on your machine.</p>
+          <p class="trust-line">Free to start. No credit card.</p>
         </div>
-        <div class="ide-mock hero-preview" role="img" aria-label="Animated ProtoFlow IDE: import parts, generate circuit, cleanup layout, export to KiCad or Altium">
+        <div class="ide-mock hero-preview" role="img" aria-label="ProtoFlow IDE preview: schematic capture and export to KiCad or Altium">
           <div class="ide-chrome">
             <span class="ide-dots" aria-hidden="true"><span></span><span></span><span></span></span>
             <span class="ide-title">protoflow-app/main.sch</span>
@@ -1804,217 +1551,76 @@
           </div>
         </div>
 
-        <div class="step-zero-workflow" aria-labelledby="step-zero-title">
-          <h2 id="step-zero-title" class="step-zero-heading">End-to-end flow</h2>
-          <p class="step-zero-tagline">
-            Capture and refine in ProtoFlow, then export for layout where DRC and release already live.
-          </p>
-          <div class="step-zero-wrap">
-            <table class="step-zero-table" aria-labelledby="step-zero-title">
-              <thead>
-                <tr>
-                  <th scope="col">Step</th>
-                  <th scope="col">Phase</th>
-                  <th scope="col">What you get</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="step-num">/01</td>
-                  <td class="step-title">Create in ProtoFlow</td>
-                  <td class="step-desc">Describe circuits in plain language, generate symbols from datasheets, and let the AI handle the drafting and cleanup. Go from idea to a clean, readable schematic in minutes.</td>
-                </tr>
-                <tr>
-                  <td class="step-num">/02</td>
-                  <td class="step-title">Export to KiCad/Altium</td>
-                  <td class="step-desc">ProtoFlow generates standard, compatible schematic files. Seamlessly hand off your work to your favorite PCB layout tool without any conversion headaches.</td>
-                </tr>
-                <tr>
-                  <td class="step-num">/03</td>
-                  <td class="step-title">Layout in Your Main EDA</td>
-                  <td class="step-desc">With the schematic done, you can focus on what you do best: the intricate work of PCB layout in the tool you already know and love.</td>
-                </tr>
-                <tr>
-                  <td class="step-num">/04</td>
-                  <td class="step-title">Save Weeks of Work</td>
-                  <td class="step-desc">By eliminating the manual, repetitive tasks of schematic design, you get to production-ready boards faster than ever before. Spend less time clicking and more time designing.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
       </div>
     </section>
 
     <section id="problem" class="problem-section" aria-labelledby="problem-title">
       <div class="wrap">
         <p class="eyebrow">Problem</p>
-        <h2 id="problem-title">Schematic capture is where velocity dies</h2>
-        <p class="lede" style="max-width:56ch;">
-          Every board still passes through a netlist. The question is how much manual work you spend before layout—not whether capture exists.
+        <h2 id="problem-title">Most time is spent before layout</h2>
+        <p class="lede" style="max-width:48ch;">
+          Symbols, pins, libraries, and sheet cleanup repeat on every project. ProtoFlow targets that work—not placement or manufacturing sign-off.
         </p>
         <div class="problem-grid">
           <div class="problem-panel">
-            <h3>Traditional bottlenecks</h3>
+            <h3>Manual capture</h3>
             <ul>
-              <li>Symbol and pin creation from PDFs, repeated across MPNs and variants.</li>
-              <li>Library fragmentation across distributors, spreadsheets, and one-off hacks.</li>
-              <li>Sheet cleanup after every review cycle—readable schematics lag behind scratch sheets.</li>
-              <li>Context switches between browser, notes, and EDA instead of design decisions.</li>
+              <li>Building symbols from datasheets.</li>
+              <li>Chasing parts across distributor sites.</li>
+              <li>Cleaning up sheets before every review.</li>
             </ul>
           </div>
           <div class="problem-panel problem-panel--resolve">
-            <h3>What ProtoFlow optimizes</h3>
+            <h3>With ProtoFlow</h3>
             <ul>
-              <li><strong>Intent-first capture</strong> — describe blocks and interfaces; draft structure programmatically.</li>
-              <li><strong>Sourcing-aware workflow</strong> — LCSC, DigiKey, and Mouser search unified with the same project files.</li>
-              <li><strong>One-shot cleanup passes</strong> — Ctrl-U style layout so reviewers read intent, not clutter.</li>
-              <li><strong>Explicit export</strong> — bundle handoff to KiCad or Altium; layout and sign-off stay in your main toolchain.</li>
+              <li>Draft from a prompt, then edit.</li>
+              <li>Search LCSC, DigiKey, Mouser in one place.</li>
+              <li>Export a bundle for KiCad or Altium.</li>
             </ul>
           </div>
         </div>
-
-        <div class="trust-band" aria-labelledby="trust-title">
-          <h3 id="trust-title">Built for engineers who need control</h3>
-          <div class="logo-strip" aria-label="Ecosystem integration focus">
-            <span class="logo-chip">Offline-first desktop</span>
-            <span class="logo-chip">KiCad bundle export</span>
-            <span class="logo-chip">Altium handoff</span>
-            <span class="logo-chip">No default cloud IP path</span>
-            <span class="logo-chip">LCSC · DigiKey · Mouser</span>
-          </div>
-          <div class="metrics-row">
-            <div class="metric-item">
-              <strong>&lt; 1 min</strong>
-              <span>Typical first-pass AI draft for medium-complexity blocks—then engineer review.</span>
-            </div>
-            <div class="metric-item">
-              <strong>100% local</strong>
-              <span>Design files remain on disk for the desktop workflow; ship air-gapped if your policy requires it.</span>
-            </div>
-            <div class="metric-item">
-              <strong>2 EDA targets</strong>
-              <span>Export pipeline focused on KiCad and Altium—not another layout editor.</span>
-            </div>
-          </div>
-        </div>
+        <p class="trust-facts">Desktop app. Local project files. You verify pinouts and ratings before release.</p>
       </div>
     </section>
 
-    <section id="workflow" class="section-workflow-premium" aria-labelledby="workflow-title">
-      <div class="wrap wf-wrap">
-        <header class="wf-header">
-          <p class="eyebrow">Workflow</p>
-          <h2 id="workflow-title">From prompt to exportable schematic</h2>
-          <p class="wf-subtitle">
-            Five stages, one desktop project: describe intent, generate structure, clean sheets, review with ERC in mind, export for layout. AI assists capture—you own correctness and release.
-          </p>
-          <div class="wf-metric-strip" aria-label="Workflow highlights">
-            <span class="wf-metric-hot">Minutes vs. hours per iteration</span>
-            <span>~5 pipeline stages · fewer manual hops</span>
-            <span>Desktop-first · local project files</span>
-          </div>
-        </header>
-
-        <div class="wf-pipeline-sticky">
-          <div class="wf-pipeline" aria-label="ProtoFlow pipeline from idea to export">
-            <article class="wf-step-card" style="--wf-delay:0ms">
-              <div class="wf-step-top">
-                <span class="wf-step-idx" aria-hidden="true">01</span>
-                <div class="wf-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h6M8 13h4"/></svg>
-                </div>
-              </div>
-              <h3 class="wf-step-title">Prompt</h3>
-              <p class="wf-step-hook">Describe your circuit in engineering terms—not a slide deck.</p>
-              <dl class="wf-io">
-                <div class="wf-io-row"><dt>Input</dt><dd>Blocks, interfaces, power trees, and constraints in plain language or notes.</dd></div>
-                <div class="wf-io-row"><dt>ProtoFlow</dt><dd>Turns intent into a structured, machine-readable schematic blueprint.</dd></div>
-                <div class="wf-io-row"><dt>Output</dt><dd>Annotated project shell ready for generation—not a blob of prose.</dd></div>
-              </dl>
-            </article>
-            <div class="wf-join" aria-hidden="true"><div class="wf-join-line"></div></div>
-
-            <article class="wf-step-card" style="--wf-delay:70ms">
-              <div class="wf-step-top">
-                <span class="wf-step-idx" aria-hidden="true">02</span>
-                <div class="wf-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
-                </div>
-              </div>
-              <h3 class="wf-step-title">AI schematic generation</h3>
-              <p class="wf-step-hook">Symbols, nets, and sheets drafted faster than manual capture.</p>
-              <dl class="wf-io">
-                <div class="wf-io-row"><dt>Input</dt><dd>Blueprint + parts from LCSC and universal component search.</dd></div>
-                <div class="wf-io-row"><dt>ProtoFlow</dt><dd>Builds sheet structure, places symbols, and wires connectivity.</dd></div>
-                <div class="wf-io-row"><dt>Output</dt><dd>First-pass schematic you can navigate—ready for cleanup and ERC passes.</dd></div>
-              </dl>
-            </article>
-            <div class="wf-join" aria-hidden="true"><div class="wf-join-line"></div></div>
-
-            <article class="wf-step-card" style="--wf-delay:140ms">
-              <div class="wf-step-top">
-                <span class="wf-step-idx" aria-hidden="true">03</span>
-                <div class="wf-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m12 3-1.9 5.8H4l4.9 3.6-1.9 5.8 4.9-3.6 4.9 3.6-1.9-5.8 4.9-3.6H14L12 3z"/></svg>
-                </div>
-              </div>
-              <h3 class="wf-step-title">Auto cleanup</h3>
-              <p class="wf-step-hook">Sheets stay readable so review isn’t a chore.</p>
-              <dl class="wf-io">
-                <div class="wf-io-row"><dt>Input</dt><dd>Busy first-pass schematic after fast iteration.</dd></div>
-                <div class="wf-io-row"><dt>ProtoFlow</dt><dd>Alignment, label hygiene, and cleanup passes (e.g. Ctrl-U style).</dd></div>
-                <div class="wf-io-row"><dt>Output</dt><dd>Clean schematic project that won’t embarrass you in design review.</dd></div>
-              </dl>
-            </article>
-            <div class="wf-join" aria-hidden="true"><div class="wf-join-line"></div></div>
-
-            <article class="wf-step-card" style="--wf-delay:210ms">
-              <div class="wf-step-top">
-                <span class="wf-step-idx" aria-hidden="true">04</span>
-                <div class="wf-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
-                </div>
-              </div>
-              <h3 class="wf-step-title">Review</h3>
-              <p class="wf-step-hook">Treat AI output as a first draft—same as generated code.</p>
-              <dl class="wf-io">
-                <div class="wf-io-row"><dt>Input</dt><dd>Clean sheets + ERC hints and datasheet reality checks.</dd></div>
-                <div class="wf-io-row"><dt>ProtoFlow</dt><dd>Fast correction loops; pinouts and ratings are on you to verify.</dd></div>
-                <div class="wf-io-row"><dt>Output</dt><dd>Engineer-reviewed schematic ready for export—not production sign-off by default.</dd></div>
-              </dl>
-            </article>
-            <div class="wf-join" aria-hidden="true"><div class="wf-join-line"></div></div>
-
-            <article class="wf-step-card" style="--wf-delay:280ms">
-              <div class="wf-step-top">
-                <span class="wf-step-idx" aria-hidden="true">05</span>
-                <div class="wf-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M5 12l7 7 7-7"/><path d="M5 19h14"/></svg>
-                </div>
-              </div>
-              <h3 class="wf-step-title">Export to KiCad / Altium</h3>
-              <p class="wf-step-hook">Layout and DFM stay in the tools that own them.</p>
-              <dl class="wf-io">
-                <div class="wf-io-row"><dt>Input</dt><dd>Validated schematic project on disk.</dd></div>
-                <div class="wf-io-row"><dt>ProtoFlow</dt><dd>Emits standard schematic bundles and handoff artifacts.</dd></div>
-                <div class="wf-io-row"><dt>Output</dt><dd>KiCad bundle / Altium-ready drop-in for placement, variants, and release.</dd></div>
-              </dl>
-            </article>
-          </div>
-        </div>
-
-        <ul class="wf-trust">
-          <li>Offline-first desktop path</li>
-          <li>KiCad bundle export</li>
-          <li>No cloud IP handoff by default—files stay local</li>
-          <li>LCSC + universal component search</li>
-        </ul>
-
-        <div class="wf-cta-row">
-          <a class="btn btn-primary" href="#download">Start building free</a>
-          <a class="btn btn-secondary" href="#compare">See full workflow</a>
+    <section id="workflow" aria-labelledby="workflow-title">
+      <div class="wrap">
+        <p class="eyebrow">Workflow</p>
+        <h2 id="workflow-title">How it works</h2>
+        <p class="lede" style="max-width:44ch;">Four steps. Nothing to configure beyond your normal review habits.</p>
+        <ol class="workflow-steps">
+          <li>
+            <span class="workflow-num">01</span>
+            <div>
+              <h3>Describe your circuit</h3>
+              <p>Write what you need—blocks, interfaces, constraints. Plain language is fine.</p>
+            </div>
+          </li>
+          <li>
+            <span class="workflow-num">02</span>
+            <div>
+              <h3>ProtoFlow generates a schematic</h3>
+              <p>First-pass symbols, nets, and sheets on disk. Expect to edit.</p>
+            </div>
+          </li>
+          <li>
+            <span class="workflow-num">03</span>
+            <div>
+              <h3>Refine if needed</h3>
+              <p>Fix parts, run cleanup (Ctrl-U), check against the datasheet.</p>
+            </div>
+          </li>
+          <li>
+            <span class="workflow-num">04</span>
+            <div>
+              <h3>Export to KiCad or Altium</h3>
+              <p>Hand off for layout, DRC, and release in the tool you already use.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="workflow-note">ProtoFlow is not a PCB editor. It does not replace your layout toolchain.</p>
+        <div class="workflow-actions">
+          <a class="btn btn-primary" href="#download">Download</a>
         </div>
       </div>
     </section>
@@ -2022,25 +1628,18 @@
     <section class="section-muted" aria-labelledby="fits-title">
       <div class="wrap">
         <p class="eyebrow">Integration</p>
-        <h2 id="fits-title">Where ProtoFlow sits in your stack</h2>
-        <p class="lede" style="max-width:52ch;">
-          Upstream of layout: intent, library glue, and schematic structure. Downstream unchanged—DRC, mechanical, and factory outputs stay in KiCad or Altium.
+        <h2 id="fits-title">Where it fits</h2>
+        <p class="lede" style="max-width:48ch;">
+          Requirements and block diagram in ProtoFlow. Reviewed schematic exported. Layout and release in KiCad or Altium.
         </p>
-        <div class="flow-diagram" style="margin-top:36px;">
-          <div class="flow-box">Requirements &amp; block diagram<br /><em>ProtoFlow</em></div>
-          <div class="flow-arrow" aria-hidden="true">→</div>
-          <div class="flow-box">Schematic (reviewed)<br /><em>ProtoFlow → export</em></div>
-          <div class="flow-arrow" aria-hidden="true">→</div>
-          <div class="flow-box">PCB layout &amp; release<br /><em>KiCad / Altium</em></div>
-        </div>
       </div>
     </section>
 
     <section id="features" aria-labelledby="features-title">
       <div class="wrap">
         <p class="eyebrow">Features</p>
-        <h2 id="features-title">Concrete tools for capture and library work</h2>
-        <p class="lede" style="max-width:56ch;">Each capability maps to a step you already do in KiCad or Altium—only faster upstream, before placement.</p>
+        <h2 id="features-title">What you get</h2>
+        <p class="lede" style="max-width:48ch;">Tools for the work you already do before layout.</p>
         <div class="grid-3" style="margin-top:36px;">
           <article class="card">
             <div class="card-icon" aria-hidden="true">
@@ -2130,10 +1729,10 @@
 
     <section id="compare" class="section-compare-premium" aria-labelledby="compare-title">
       <div class="wrap">
-        <p class="eyebrow">Why ProtoFlow Wins</p>
-        <h2 id="compare-title" class="compare-title">Built Different.<span class="compare-title-break"> </span>Built Better.</h2>
+        <p class="eyebrow">Compare</p>
+        <h2 id="compare-title" class="compare-title">ProtoFlow vs. alternatives</h2>
         <p class="compare-lede" style="margin-top:14px;">
-          See how ProtoFlow stacks up against Flux AI and traditional EDA tools.
+          Schematic capture and export—not layout or manufacturing sign-off.
         </p>
 
         <div class="compare-matrix-wrap">
@@ -2312,7 +1911,7 @@
       <div class="wrap">
         <p class="eyebrow">Who it’s for</p>
         <h2 id="usecases-title">Use cases</h2>
-        <p class="lede" style="max-width:50ch;">Same workflow discipline—student teams, startups, and integrators all compress capture before locking the netlist.</p>
+        <p class="lede" style="max-width:44ch;">Student teams, startups, and integrators doing schematic work before layout.</p>
         <div class="pill-row" style="margin-top:28px;">
           <span class="pill">Student design teams</span>
           <span class="pill">Hardware startups</span>
@@ -2356,12 +1955,11 @@
       <div class="wrap">
         <p class="eyebrow">Download</p>
         <h2 id="final-cta-title">Install ProtoFlow</h2>
-        <p class="lede" style="max-width:48ch;margin-left:auto;margin-right:auto;">Desktop build, local project files. Run one sample flow end-to-end before you standardize on export for a program.</p>
+        <p class="lede" style="max-width:42ch;margin-left:auto;margin-right:auto;">Desktop app. Local project files.</p>
         <div class="cta-row" style="justify-content:center;margin-top:8px;">
           <a class="btn btn-primary" href="#download">Download</a>
-          <a class="btn btn-secondary" href="#workflow">Technical workflow</a>
         </div>
-        <p class="trust-line" style="margin:20px auto 0; text-align:center;"><strong>No credit card on file.</strong> Offline-first path; you control what leaves the workstation.</p>
+        <p class="trust-line" style="margin:20px auto 0; text-align:center;">Free to start. No credit card.</p>
       </div>
     </section>
   </main>
@@ -2389,24 +1987,6 @@
         window.addEventListener("scroll", onScroll, { passive: true });
       }
     })();
-    (function () {
-      var cards = document.querySelectorAll(".wf-step-card");
-      if (!cards.length) return;
-      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduceMotion || !("IntersectionObserver" in window)) {
-        cards.forEach(function (el) { el.classList.add("is-inview"); });
-        return;
-      }
-      var obs = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) entry.target.classList.add("is-inview");
-          });
-        },
-        { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
-      );
-      cards.forEach(function (el) { obs.observe(el); });
-    })();
-  </script>
+</script>
 </body>
 </html>
