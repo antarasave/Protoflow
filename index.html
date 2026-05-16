@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
 </head>
-<body class="site-body page-home">
+<body class="site-body page-landing">
   <a class="skip" href="#main">Skip to content</a>
 
   <div class="announce" role="region" aria-label="Early access">
@@ -20,152 +20,476 @@
 
   <header class="site">
     <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="ProtoFlow home">
+      <a class="brand" href="#" aria-label="ProtoFlow home">
         <span class="brand-mark" aria-hidden="true">P</span>
         ProtoFlow
       </a>
       <nav class="primary" aria-label="Primary">
-        <a href="workflow.html">Workflow</a>
-        <a href="features.html">Features</a>
-        <a href="compare.html">Compare</a>
-        <a href="faq.html">FAQ</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#features">Features</a>
+        <a href="#compare">Compare</a>
+        <a href="#faq">FAQ</a>
       </nav>
       <div class="header-actions">
-        <a class="btn btn-primary" href="download.html">Download</a>
+        <a class="btn btn-primary" href="#download">Download</a>
       </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero page-single" aria-labelledby="hero-title">
-          <div class="wrap hero-stack">
-            <div class="hero-copy">
-              <h1 id="hero-title">Schematics shouldn&rsquo;t be this hard</h1>
-              <p class="lede">
-                ProtoFlow is a desktop app for schematic capture. Describe a circuit, get a draft you can edit, export to KiCad or Altium for layout. Files stay on your machine.
-              </p>
-              <div class="cta-row">
-                <a class="btn btn-primary" href="download.html">Download</a>
-                <a class="btn btn-secondary" href="workflow.html">How it works</a>
-              </div>
-              <p class="trust-line">Free to start. No credit card.</p>
-            </div>
-            <div class="ide-mock hero-preview" role="img" aria-label="Animated ProtoFlow IDE: import parts, generate circuit, cleanup layout, export to KiCad or Altium">
-              <div class="ide-chrome">
-                <span class="ide-dots" aria-hidden="true"><span></span><span></span><span></span></span>
-                <span class="ide-title">protoflow-app/main.sch</span>
-                <span>v1.0</span>
-              </div>
-              <div class="ide-body">
-                <ul class="ide-pipeline" aria-label="Design pipeline">
-                  <li>Import Parts</li>
-                  <li>Generate Circuit</li>
-                  <li>Cleanup Layout</li>
-                  <li>Export to EDA</li>
-                </ul>
-                <div class="ide-main">
-                  <div class="ide-schematic-wrap">
-                    <svg class="ide-schematic" viewBox="0 40 440 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <g class="wire-layer">
-                        <path class="wire-rail" pathLength="100" d="M 96 64 L 290 64 M 136 72 L 136 64 M 248 72 L 248 64 M 96 120 L 290 120 M 136 116 L 136 120 M 248 116 L 248 120"/>
-                        <path class="wire-aux" pathLength="100" d="M 84 88 L 104 88 M 84 100 L 104 100 M 178 80 L 206 80 M 178 88 L 206 88 M 178 102 L 206 102 M 178 110 L 206 110"/>
-                        <path class="import-stream" d="M 84 94 L 104 94"/>
-                        <path class="wire" pathLength="100" d="M 178 94 L 206 94 M 290 94 L 304 94"/>
-                        <path class="export-beam" pathLength="100" d="M 374 94 L 396 94"/>
-                      </g>
-                      <g class="import-panel">
-                        <title>Library import</title>
-                        <rect class="panel-box" x="18" y="74" width="66" height="40" rx="8"/>
-                        <text class="panel-title" x="51" y="92" text-anchor="middle">Import</text>
-                        <text class="panel-sub" x="51" y="104" text-anchor="middle">LCSC · DigiKey</text>
-                        <circle class="panel-port" cx="84" cy="88" r="1.8"/>
-                        <circle class="panel-port" cx="84" cy="94" r="2.5"/>
-                        <circle class="panel-port" cx="84" cy="100" r="1.8"/>
-                      </g>
-                      <g class="part-u1">
-                        <title>ESP32 MCU</title>
-                        <line class="sch-pin" x1="94" y1="80" x2="104" y2="80"/>
-                        <line class="sch-pin" x1="94" y1="88" x2="104" y2="88"/>
-                        <line class="sch-pin" x1="94" y1="94" x2="104" y2="94"/>
-                        <line class="sch-pin" x1="94" y1="102" x2="104" y2="102"/>
-                        <line class="sch-pin" x1="94" y1="110" x2="104" y2="110"/>
-                        <rect class="sch-body" x="104" y="72" width="64" height="44"/>
-                        <text class="part-label" x="136" y="90" text-anchor="middle">U1</text>
-                        <text class="part-sub" x="136" y="103" text-anchor="middle">ESP32</text>
-                        <line class="sch-pin" x1="168" y1="80" x2="178" y2="80"/>
-                        <line class="sch-pin" x1="168" y1="88" x2="178" y2="88"/>
-                        <line class="sch-pin" x1="168" y1="94" x2="178" y2="94"/>
-                        <line class="sch-pin" x1="168" y1="102" x2="178" y2="102"/>
-                        <line class="sch-pin" x1="168" y1="110" x2="178" y2="110"/>
-                      </g>
-                      <g class="part-u2">
-                        <title>DAC IC</title>
-                        <line class="sch-pin" x1="206" y1="80" x2="216" y2="80"/>
-                        <line class="sch-pin" x1="206" y1="88" x2="216" y2="88"/>
-                        <line class="sch-pin" x1="206" y1="94" x2="216" y2="94"/>
-                        <line class="sch-pin" x1="206" y1="102" x2="216" y2="102"/>
-                        <line class="sch-pin" x1="206" y1="110" x2="216" y2="110"/>
-                        <rect class="sch-body" x="216" y="72" width="64" height="44"/>
-                        <text class="part-label" x="248" y="90" text-anchor="middle">U2</text>
-                        <text class="part-sub" x="248" y="103" text-anchor="middle">DAC</text>
-                        <line class="sch-pin" x1="280" y1="80" x2="290" y2="80"/>
-                        <line class="sch-pin" x1="280" y1="88" x2="290" y2="88"/>
-                        <line class="sch-pin" x1="280" y1="94" x2="290" y2="94"/>
-                        <line class="sch-pin" x1="280" y1="102" x2="290" y2="102"/>
-                        <line class="sch-pin" x1="280" y1="110" x2="290" y2="110"/>
-                      </g>
-                      <g class="cleanup-badge">
-                        <g transform="translate(216, 62)">
-                          <circle class="cleanup-ripple" cx="0" cy="0" r="10"/>
-                          <g class="cleanup-action">
-                            <text class="cleanup-label" x="0" y="1" text-anchor="middle" dominant-baseline="central">Ctrl-U</text>
-                          </g>
-                        </g>
-                      </g>
-                      <g class="export-panel">
-                        <title>Export bundle</title>
-                        <rect class="panel-box" x="304" y="68" width="72" height="52" rx="8"/>
-                        <text class="panel-title" x="340" y="84" text-anchor="middle">Export</text>
-                        <g class="export-chip kicad">
-                          <rect class="panel-chip" x="314" y="88" width="52" height="13" rx="6"/>
-                          <text class="panel-chip-label" x="340" y="97" text-anchor="middle">KiCad</text>
-                        </g>
-                        <g class="export-chip altium">
-                          <rect class="panel-chip" x="314" y="103" width="52" height="13" rx="6"/>
-                          <text class="panel-chip-label" x="340" y="112" text-anchor="middle">Altium</text>
-                        </g>
-                        <circle class="panel-port" cx="304" cy="94" r="2.5"/>
-                      </g>
-                    </svg>
+    <section class="hero" aria-labelledby="hero-title">
+              <div class="wrap hero-stack">
+                <div class="hero-copy">
+                  <h1 id="hero-title">Schematics shouldn&rsquo;t be this hard</h1>
+                  <p class="lede">
+                    ProtoFlow is a desktop app for schematic capture. Describe a circuit, get a draft you can edit, export to KiCad or Altium for layout. Files stay on your machine.
+                  </p>
+                  <div class="cta-row">
+                    <a class="btn btn-primary" href="#download">Download</a>
+                    <a class="btn btn-secondary" href="#workflow">How it works</a>
                   </div>
-                  <div class="ide-footer">
-                    <div class="ide-panel">
-                      <div class="ide-panel-label">
-                        <span>System log</span>
-                        <span>T-NODE: 882-XJ</span>
+                  <p class="trust-line">Free to start. No credit card.</p>
+                </div>
+                <div class="ide-mock hero-preview" role="img" aria-label="Animated ProtoFlow IDE: import parts, generate circuit, cleanup layout, export to KiCad or Altium">
+                  <div class="ide-chrome">
+                    <span class="ide-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+                    <span class="ide-title">protoflow-app/main.sch</span>
+                    <span>v1.0</span>
+                  </div>
+                  <div class="ide-body">
+                    <ul class="ide-pipeline" aria-label="Design pipeline">
+                      <li>Import Parts</li>
+                      <li>Generate Circuit</li>
+                      <li>Cleanup Layout</li>
+                      <li>Export to EDA</li>
+                    </ul>
+                    <div class="ide-main">
+                      <div class="ide-schematic-wrap">
+                        <svg class="ide-schematic" viewBox="0 40 440 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <g class="wire-layer">
+                            <path class="wire-rail" pathLength="100" d="M 96 64 L 290 64 M 136 72 L 136 64 M 248 72 L 248 64 M 96 120 L 290 120 M 136 116 L 136 120 M 248 116 L 248 120"/>
+                            <path class="wire-aux" pathLength="100" d="M 84 88 L 104 88 M 84 100 L 104 100 M 178 80 L 206 80 M 178 88 L 206 88 M 178 102 L 206 102 M 178 110 L 206 110"/>
+                            <path class="import-stream" d="M 84 94 L 104 94"/>
+                            <path class="wire" pathLength="100" d="M 178 94 L 206 94 M 290 94 L 304 94"/>
+                            <path class="export-beam" pathLength="100" d="M 374 94 L 396 94"/>
+                          </g>
+                          <g class="import-panel">
+                            <title>Library import</title>
+                            <rect class="panel-box" x="18" y="74" width="66" height="40" rx="8"/>
+                            <text class="panel-title" x="51" y="92" text-anchor="middle">Import</text>
+                            <text class="panel-sub" x="51" y="104" text-anchor="middle">LCSC · DigiKey</text>
+                            <circle class="panel-port" cx="84" cy="88" r="1.8"/>
+                            <circle class="panel-port" cx="84" cy="94" r="2.5"/>
+                            <circle class="panel-port" cx="84" cy="100" r="1.8"/>
+                          </g>
+                          <g class="part-u1">
+                            <title>ESP32 MCU</title>
+                            <line class="sch-pin" x1="94" y1="80" x2="104" y2="80"/>
+                            <line class="sch-pin" x1="94" y1="88" x2="104" y2="88"/>
+                            <line class="sch-pin" x1="94" y1="94" x2="104" y2="94"/>
+                            <line class="sch-pin" x1="94" y1="102" x2="104" y2="102"/>
+                            <line class="sch-pin" x1="94" y1="110" x2="104" y2="110"/>
+                            <rect class="sch-body" x="104" y="72" width="64" height="44"/>
+                            <text class="part-label" x="136" y="90" text-anchor="middle">U1</text>
+                            <text class="part-sub" x="136" y="103" text-anchor="middle">ESP32</text>
+                            <line class="sch-pin" x1="168" y1="80" x2="178" y2="80"/>
+                            <line class="sch-pin" x1="168" y1="88" x2="178" y2="88"/>
+                            <line class="sch-pin" x1="168" y1="94" x2="178" y2="94"/>
+                            <line class="sch-pin" x1="168" y1="102" x2="178" y2="102"/>
+                            <line class="sch-pin" x1="168" y1="110" x2="178" y2="110"/>
+                          </g>
+                          <g class="part-u2">
+                            <title>DAC IC</title>
+                            <line class="sch-pin" x1="206" y1="80" x2="216" y2="80"/>
+                            <line class="sch-pin" x1="206" y1="88" x2="216" y2="88"/>
+                            <line class="sch-pin" x1="206" y1="94" x2="216" y2="94"/>
+                            <line class="sch-pin" x1="206" y1="102" x2="216" y2="102"/>
+                            <line class="sch-pin" x1="206" y1="110" x2="216" y2="110"/>
+                            <rect class="sch-body" x="216" y="72" width="64" height="44"/>
+                            <text class="part-label" x="248" y="90" text-anchor="middle">U2</text>
+                            <text class="part-sub" x="248" y="103" text-anchor="middle">DAC</text>
+                            <line class="sch-pin" x1="280" y1="80" x2="290" y2="80"/>
+                            <line class="sch-pin" x1="280" y1="88" x2="290" y2="88"/>
+                            <line class="sch-pin" x1="280" y1="94" x2="290" y2="94"/>
+                            <line class="sch-pin" x1="280" y1="102" x2="290" y2="102"/>
+                            <line class="sch-pin" x1="280" y1="110" x2="290" y2="110"/>
+                          </g>
+                          <g class="cleanup-badge">
+                            <g transform="translate(216, 62)">
+                              <circle class="cleanup-ripple" cx="0" cy="0" r="10"/>
+                              <g class="cleanup-action">
+                                <text class="cleanup-label" x="0" y="1" text-anchor="middle" dominant-baseline="central">Ctrl-U</text>
+                              </g>
+                            </g>
+                          </g>
+                          <g class="export-panel">
+                            <title>Export bundle</title>
+                            <rect class="panel-box" x="304" y="68" width="72" height="52" rx="8"/>
+                            <text class="panel-title" x="340" y="84" text-anchor="middle">Export</text>
+                            <g class="export-chip kicad">
+                              <rect class="panel-chip" x="314" y="88" width="52" height="13" rx="6"/>
+                              <text class="panel-chip-label" x="340" y="97" text-anchor="middle">KiCad</text>
+                            </g>
+                            <g class="export-chip altium">
+                              <rect class="panel-chip" x="314" y="103" width="52" height="13" rx="6"/>
+                              <text class="panel-chip-label" x="340" y="112" text-anchor="middle">Altium</text>
+                            </g>
+                            <circle class="panel-port" cx="304" cy="94" r="2.5"/>
+                          </g>
+                        </svg>
                       </div>
-                      <div class="ide-log" aria-hidden="true">
-                        <div class="line">&gt; Initializing ProtoFlow v1.0.0…</div>
-                        <div class="line">&gt; Importing from LCSC · DigiKey…</div>
-                        <div class="line">&gt; Generating ESP32 → DAC schematic…</div>
-                        <div class="line">&gt; Ctrl-U: aligning layout…</div>
-                        <div class="line ok">&gt; Exporting bundle → KiCad / Altium<span class="cursor" aria-hidden="true"></span></div>
+                      <div class="ide-footer">
+                        <div class="ide-panel">
+                          <div class="ide-panel-label">
+                            <span>System log</span>
+                            <span>T-NODE: 882-XJ</span>
+                          </div>
+                          <div class="ide-log" aria-hidden="true">
+                            <div class="line">&gt; Initializing ProtoFlow v1.0.0…</div>
+                            <div class="line">&gt; Importing from LCSC · DigiKey…</div>
+                            <div class="line">&gt; Generating ESP32 → DAC schematic…</div>
+                            <div class="line">&gt; Ctrl-U: aligning layout…</div>
+                            <div class="line ok">&gt; Exporting bundle → KiCad / Altium<span class="cursor" aria-hidden="true"></span></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+        
               </div>
-            </div>
+            </section>
+
+    <section id="workflow" aria-labelledby="step-zero-label">
+          <div class="wrap workflow-wrap">
+            <header class="step-zero-header">
+              <span class="step-zero-label" id="step-zero-label">Step zero</span>
+              <h2 id="workflow-title">Capture and refine before layout</h2>
+              <p class="lede">ProtoFlow handles schematic work upstream. Your main EDA owns placement, DRC, and release.</p>
+            </header>
     
+            <ol class="step-zero-pipeline" aria-label="Step zero workflow">
+              <li class="step-zero-item">
+                <span class="step-zero-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+                </span>
+                <span class="step-zero-item-title">Create in ProtoFlow</span>
+              </li>
+              <li class="step-zero-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </li>
+              <li class="step-zero-item">
+                <span class="step-zero-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M5 12l7 7 7-7"/><path d="M5 19h14"/></svg>
+                </span>
+                <span class="step-zero-item-title">Export to KiCad/Altium</span>
+              </li>
+              <li class="step-zero-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </li>
+              <li class="step-zero-item">
+                <span class="step-zero-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </span>
+                <span class="step-zero-item-title">Layout in your main EDA</span>
+              </li>
+              <li class="step-zero-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </li>
+              <li class="step-zero-item">
+                <span class="step-zero-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                </span>
+                <span class="step-zero-item-title">Save weeks of work</span>
+              </li>
+            </ol>
+    
+            <p class="workflow-note">ProtoFlow is not a PCB editor. It does not replace your layout toolchain.</p>
+            <div class="workflow-actions">
+              <a class="btn btn-primary" href="#download">Download</a>
+            </div>
           </div>
         </section>
+
+    <section id="features" aria-labelledby="features-title">
+              <div class="wrap">
+                <p class="eyebrow">Features</p>
+                <h2 id="features-title">What you get</h2>
+                <p class="lede" style="max-width:48ch;">Tools for the work you already do before layout.</p>
+                <div class="grid-3" style="margin-top:36px;">
+                  <article class="card">
+                    <div class="card-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg>
+                    </div>
+                    <h3>AI circuit generation</h3>
+                    <p>Structured draft from a clear prompt—then iterate against datasheets, ratings, and pinouts like any generated artifact.</p>
+                  </article>
+                  <article class="card">
+                    <div class="card-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                    </div>
+                    <h3>Datasheet → symbol / footprint</h3>
+                    <p>Cut pin-table transcription loops where models are supported. Always validate pads, thermal behavior, and pin-one orientation on the PDF.</p>
+                  </article>
+                  <article class="card">
+                    <div class="card-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </div>
+                    <h3>Distributor component search</h3>
+                    <p>One search surface across LCSC, DigiKey, and Mouser so MPNs land in the project instead of twenty browser tabs.</p>
+                  </article>
+                  <article class="card">
+                    <div class="card-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8H4l4.9 3.6-1.9 5.8 4.9-3.6 4.9 3.6-1.9-5.8 4.9-3.6H14L12 3z"/></svg>
+                    </div>
+                    <h3>Ctrl-U schematic cleanup</h3>
+                    <p>Align and de-clutter selected regions so diff reviews focus on nets and blocks—not spaghetti geometry.</p>
+                  </article>
+                  <article class="card">
+                    <div class="card-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    </div>
+                    <h3>KiCad / Altium export</h3>
+                    <p>Bundled artifacts for the tools your org already uses for variants, simulation hooks, and manufacturing release.</p>
+                  </article>
+                  <article class="card">
+                    <div class="card-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                    <h3>Desktop / private workflow</h3>
+                    <p>Designed for NDAs and lab policies: default path keeps IP off someone else’s infra until you choose otherwise.</p>
+                  </article>
+                </div>
+              </div>
+            </section>
+
+    <section id="compare" class="section-compare-premium" aria-labelledby="compare-title">
+              <div class="wrap">
+                <p class="eyebrow">Compare</p>
+                <h2 id="compare-title" class="compare-title">ProtoFlow vs. alternatives</h2>
+                <p class="compare-lede" style="margin-top:14px;">
+                  Schematic capture and export—not layout or manufacturing sign-off.
+                </p>
+        
+                <div class="compare-matrix-wrap">
+                  <table class="compare-matrix" aria-label="Comparison of ProtoFlow, Flux AI, and traditional EDA for schematic workflow">
+                    <thead>
+                      <tr>
+                        <th scope="col">Feature</th>
+                        <th scope="col" class="th-proto">
+                          <span class="th-proto-inner">
+                            <span class="th-proto-icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m12 3-1.9 5.8H4l4.9 3.6-1.9 5.8 4.9-3.6 4.9 3.6-1.9-5.8 4.9-3.6H14L12 3z"/></svg>
+                            </span>
+                            <span>ProtoFlow</span>
+                            <span class="badge-free">FREE</span>
+                          </span>
+                        </th>
+                        <th scope="col">Flux AI</th>
+                        <th scope="col">Traditional EDA</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">AI Generation Speed</th>
+                        <td class="td-proto">
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">Seconds</span>
+                            <span class="cell-sub">Fast iteration</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">Minutes</span>
+                            <span class="cell-sub">Burns credits</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">N/A</span>
+                            <span class="cell-sub">Manual only</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Cost</th>
+                        <td class="td-proto">
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">FREE</span>
+                            <span class="cell-sub">Very generous limits</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">$$$</span>
+                            <span class="cell-sub">Per-credit billing</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">$$-$$$</span>
+                            <span class="cell-sub">License fees</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Component Library</th>
+                        <td class="td-proto">
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">LCSC + DigiKey + Mouser</span>
+                            <span class="cell-sub">Unified search</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">Community</span>
+                            <span class="cell-sub">Limited</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">Manual</span>
+                            <span class="cell-sub">Build yourself</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Privacy</th>
+                        <td class="td-proto">
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">Desktop App</span>
+                            <span class="cell-sub">Your files stay local</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">Cloud Only</span>
+                            <span class="cell-sub">Their servers</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">Local</span>
+                            <span class="cell-sub">Local</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Auto Cleanup</th>
+                        <td class="td-proto">
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">Ctrl-U Magic</span>
+                            <span class="cell-sub">One-click beautify</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">None</span>
+                            <span class="cell-sub">Manual layout</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">None</span>
+                            <span class="cell-sub">Manual layout</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Interface</th>
+                        <td class="td-proto">
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">VS Code Style</span>
+                            <span class="cell-sub">Split screen, themes</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">Browser Canvas</span>
+                            <span class="cell-sub">Limited</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">90s UI</span>
+                            <span class="cell-sub">Outdated</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">KiCad Export</th>
+                        <td class="td-proto">
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">One-Click Bundle</span>
+                            <span class="cell-sub">Ready to use</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-bad">Broken</span>
+                            <span class="cell-sub">Manual fixes</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="cell-stack">
+                            <span class="cell-line cell-good">Native/Import</span>
+                            <span class="cell-sub">Varies</span>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+              <div class="wrap" style="max-width:720px;">
+                <p class="eyebrow">FAQ</p>
+                <h2 id="faq-title">FAQ</h2>
+                <p class="lede"><strong>Direct answers</strong> — short, engineer-to-engineer. Update any product-specific limits as you ship.</p>
+        
+                <details class="faq">
+                  <summary>Does ProtoFlow replace KiCad or Altium?</summary>
+                  <p class="ans"><strong>No.</strong> It targets schematic capture and prep, then export. Layout, DRC, manufacturing outputs, and org-wide library governance stay in your EDA toolchain.</p>
+                </details>
+                <details class="faq">
+                  <summary>Will the AI get my design “right” on the first try?</summary>
+                  <p class="ans"><strong>Assume no.</strong> Treat AI output as a first draft. You are responsible for datasheet-accurate pinouts, ratings, and design review—same as any generated code.</p>
+                </details>
+                <details class="faq">
+                  <summary>Where do my files live?</summary>
+                  <p class="ans"><strong>On your machine</strong> for the desktop workflow. If you add cloud features later, say exactly what leaves the device and when.</p>
+                </details>
+                <details class="faq">
+                  <summary>Do I need a credit card to download?</summary>
+                  <p class="ans"><strong>No</strong> for this landing page’s promise—swap in your real billing policy if that changes.</p>
+                </details>
+                <details class="faq">
+                  <summary>What should I verify after export?</summary>
+                  <p class="ans">Symbol pin maps, power trees, default footprints, ERC in your EDA tool, and any analog-sensitive nets. Export is a handoff, not sign-off.</p>
+                </details>
+              </div>
+            </section>
+
+    <section class="footer-cta" id="download" aria-labelledby="final-cta-title">
+              <div class="wrap">
+                <p class="eyebrow">Download</p>
+                <h2 id="final-cta-title">Install ProtoFlow</h2>
+                <p class="lede" style="max-width:42ch;margin-left:auto;margin-right:auto;">Desktop app. Local project files.</p>
+                <div class="cta-row" style="justify-content:center;margin-top:8px;">
+                  <a class="btn btn-primary" href="#download">Download</a>
+                </div>
+                <p class="trust-line" style="margin:20px auto 0; text-align:center;">Free to start. No credit card.</p>
+              </div>
+            </section>
   </main>
 
   <footer class="site">
     <div class="footer-inner">
       <span>© <span id="y"></span> ProtoFlow. All rights reserved.</span>
       <div class="footer-links">
-        <a href="docs.html">Documentation</a>
+        <a href="#docs">Documentation</a>
         <a href="#">Privacy</a>
         <a href="#">Security</a>
       </div>

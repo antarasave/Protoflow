@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="How ProtoFlow works: describe, generate, refine, export to KiCad or Altium." />
+  <meta name="description" content="Step zero workflow: create in ProtoFlow, export to KiCad or Altium, layout in your main EDA." />
   <title>Workflow — ProtoFlow</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,47 +37,56 @@
   </header>
 
   <main id="main">
-    <section class="page-single" id="workflow" aria-labelledby="workflow-title">
-          <div class="wrap">
-            <p class="eyebrow">Workflow</p>
-            <h2 id="workflow-title">How it works</h2>
-            <p class="lede" style="max-width:44ch;">Four steps. Nothing to configure beyond your normal review habits.</p>
-            <ol class="workflow-steps">
-              <li>
-                <span class="workflow-num">01</span>
-                <div>
-                  <h3>Describe your circuit</h3>
-                  <p>Write what you need—blocks, interfaces, constraints. Plain language is fine.</p>
-                </div>
-              </li>
-              <li>
-                <span class="workflow-num">02</span>
-                <div>
-                  <h3>ProtoFlow generates a schematic</h3>
-                  <p>First-pass symbols, nets, and sheets on disk. Expect to edit.</p>
-                </div>
-              </li>
-              <li>
-                <span class="workflow-num">03</span>
-                <div>
-                  <h3>Refine if needed</h3>
-                  <p>Fix parts, run cleanup (Ctrl-U), check against the datasheet.</p>
-                </div>
-              </li>
-              <li>
-                <span class="workflow-num">04</span>
-                <div>
-                  <h3>Export to KiCad or Altium</h3>
-                  <p>Hand off for layout, DRC, and release in the tool you already use.</p>
-                </div>
-              </li>
-            </ol>
-            <p class="workflow-note">ProtoFlow is not a PCB editor. It does not replace your layout toolchain.</p>
-            <div class="workflow-actions">
-              <a class="btn btn-primary" href="download.html">Download</a>
-            </div>
-          </div>
-        </section>
+    <section class="page-single" id="workflow" aria-labelledby="step-zero-label">
+      <div class="wrap workflow-wrap">
+        <header class="step-zero-header">
+          <span class="step-zero-label" id="step-zero-label">Step zero</span>
+          <h2 id="workflow-title">Capture and refine before layout</h2>
+          <p class="lede">ProtoFlow handles schematic work upstream. Your main EDA owns placement, DRC, and release.</p>
+        </header>
+
+        <ol class="step-zero-pipeline" aria-label="Step zero workflow">
+          <li class="step-zero-item">
+            <span class="step-zero-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+            </span>
+            <span class="step-zero-item-title">Create in ProtoFlow</span>
+          </li>
+          <li class="step-zero-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </li>
+          <li class="step-zero-item">
+            <span class="step-zero-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M5 12l7 7 7-7"/><path d="M5 19h14"/></svg>
+            </span>
+            <span class="step-zero-item-title">Export to KiCad/Altium</span>
+          </li>
+          <li class="step-zero-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </li>
+          <li class="step-zero-item">
+            <span class="step-zero-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </span>
+            <span class="step-zero-item-title">Layout in your main EDA</span>
+          </li>
+          <li class="step-zero-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </li>
+          <li class="step-zero-item">
+            <span class="step-zero-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <span class="step-zero-item-title">Save weeks of work</span>
+          </li>
+        </ol>
+
+        <p class="workflow-note">ProtoFlow is not a PCB editor. It does not replace your layout toolchain.</p>
+        <div class="workflow-actions">
+          <a class="btn btn-primary" href="download.html">Download</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site">

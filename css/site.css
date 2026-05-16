@@ -1070,40 +1070,129 @@
     .compare .partial { color: var(--warn); font-family: var(--font-mono); }
 
     #workflow { background: var(--bg0); }
-    .workflow-steps {
-      list-style: none;
-      margin: 36px 0 0;
-      padding: 0;
-      max-width: 560px;
+    .workflow-wrap { max-width: min(var(--max), 1100px); }
+    .step-zero-header {
+      text-align: center;
+      margin-bottom: 40px;
     }
-    .workflow-steps li {
-      display: grid;
-      grid-template-columns: 2.5rem 1fr;
-      gap: 0 20px;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .workflow-steps li:last-child { border-bottom: none; }
-    .workflow-num {
+    .step-zero-header .eyebrow { display: none; }
+    .step-zero-label {
+      display: block;
       font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--dim);
-      padding-top: 3px;
+      font-size: clamp(2.25rem, 6vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-hover);
+      margin: 0 0 12px;
+      line-height: 1;
     }
-    .workflow-steps h3 { margin: 0 0 6px; font-size: 1.05rem; }
-    .workflow-steps p {
+    .step-zero-header #workflow-title {
+      font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 10px;
+      max-width: none;
+    }
+    .step-zero-header .lede {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 48ch;
+    }
+    .step-zero-pipeline {
+      list-style: none;
       margin: 0;
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.55;
+      padding: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .step-zero-item {
+      flex: 1 1 140px;
+      min-width: 120px;
+      max-width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      padding: 20px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      background: var(--bg2);
+    }
+    .step-zero-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      background: var(--brand-muted);
+      border: 1px solid var(--brand-border);
+      color: var(--brand-hover);
+      flex-shrink: 0;
+    }
+    .step-zero-icon svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+    .step-zero-item-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .step-zero-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      width: 28px;
+      color: var(--dim);
+      padding: 0 2px;
+      align-self: center;
+    }
+    .step-zero-arrow svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+    @media (max-width: 720px) {
+      .step-zero-pipeline {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+      .step-zero-item {
+        max-width: 280px;
+        width: 100%;
+      }
+      .step-zero-arrow {
+        width: auto;
+        height: 24px;
+        padding: 4px 0;
+        transform: rotate(90deg);
+      }
     }
     .workflow-note {
-      margin: 28px 0 0;
+      margin: 32px auto 0;
       font-size: 14px;
       color: var(--dim);
       max-width: 48ch;
+      text-align: center;
     }
-    .workflow-actions { margin-top: 24px; }
+    .workflow-actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+    }
     .trust-facts {
       margin: 40px 0 0;
       padding-top: 20px;
@@ -1461,4 +1550,22 @@
         justify-self: center;
         padding-top: 8px;
       }
+    }
+
+    /* Single-page landing layout */
+    body.page-landing main#main {
+      display: block;
+      flex: none;
+    }
+    body.page-landing main#main > section {
+      scroll-margin-top: 80px;
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-section) 24px;
+    }
+    body.page-landing .hero {
+      padding-top: 56px;
+      padding-bottom: var(--space-section);
+    }
+    body.page-landing .footer-cta {
+      border-bottom: none;
     }
