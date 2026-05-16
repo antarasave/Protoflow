@@ -51,11 +51,6 @@ const docs = extractMainSection(sourceMain, /<section id="docs"[\s\S]*?<\/sectio
 const compare = stripPageSingle(
   extractMainSection(read("compare.html"), /<section[^>]*id="compare"[\s\S]*?<\/section>/, "compare")
 );
-const usecases = extractMainSection(
-  sourceMain,
-  /<section class="section-alt" aria-labelledby="usecases-title"[\s\S]*?<\/section>/,
-  "usecases"
-);
 const faq = stripPageSingle(
   extractMainSection(read("faq.html"), /<section[^>]*id="faq"[\s\S]*?<\/section>/, "faq")
 );
@@ -64,7 +59,7 @@ const download = stripPageSingle(
 );
 
 const mainContent = patchAnchors(
-  [hero, workflow, integration, features, docs, compare, usecases, faq, download]
+  [hero, workflow, integration, features, docs, compare, faq, download]
     .map((s) => "    " + s.trim().split("\n").join("\n    "))
     .join("\n\n")
 );
@@ -79,6 +74,7 @@ const headerFixed = `  <header class="site">
         <a href="#workflow">Workflow</a>
         <a href="#features">Features</a>
         <a href="#compare">Compare</a>
+        <a href="#docs">Documentation</a>
         <a href="#faq">FAQ</a>
       </nav>
       <div class="header-actions">
