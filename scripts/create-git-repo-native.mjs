@@ -37,9 +37,14 @@ function writeBlob(absPath) {
   return writeObject("blob", fs.readFileSync(absPath));
 }
 
+/** Git tree entries must be sorted by name (byte order, not locale). */
+function cmpGitPath(a, b) {
+  return Buffer.from(a, "utf8").compare(Buffer.from(b, "utf8"));
+}
+
 /** entries: { name, hash, mode } — hash is 40-char hex, mode 100644 | 40000 */
 function writeTree(entries) {
-  const sorted = [...entries].sort((a, b) => a.name.localeCompare(b.name));
+  const sorted = [...entries].sort((x, y) => cmpGitPath(x.name, y.name));
   const parts = [];
   for (const e of sorted) {
     parts.push(Buffer.from(`${e.mode} ${e.name}\0`, "utf8"));
