@@ -1,0 +1,17 @@
+﻿">
+                  <div class="ide-panel-label">AI side-panel</div>
+                  <div class="ide-chat" aria-hidden="true">
+                    <span class="user">User: ESP32 + DAC with decoupling</span><br />
+                    <span class="agent">Agent: Drafting nets + passives…</span>
+                  </div>
+                </div>
+                <div class="ide-panel">
+                  <div class="ide-panel-label">
+                    <span>System log</span>
+                    <span>T-NODE: 882-XJ</span>
+                  </div>
+                  <div class="ide-log" aria-hidden="true">
+                    <div class="line">&gt; Initializing ProtoFlow v1.0.0…</div>
+                    <div class="line">&gt; Importing BSS123 from LCSC…</div>
+                    <div class="line">&gt; Generating sub-circuit…</div>
+                    <div class="line">&gt; Running Ctrl-U clea

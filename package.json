@@ -1,0 +1,8 @@
+{
+  "name": "protoflow-site",
+  "private": true,
+  "description": "ProtoFlow marketing / landing page (static)",
+  "scripts": {
+    "git:init": "node scripts/create-git-repo-native.mjs"
+  }
+}

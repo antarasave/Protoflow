@@ -1,0 +1,10 @@
+# Dependencies (only needed to run scripts/create-git-repo.mjs once)
+node_modules/
+package-lock.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
