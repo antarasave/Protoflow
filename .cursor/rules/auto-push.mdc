@@ -1,0 +1,15 @@
+---
+description: Push to git automatically after making project changes
+alwaysApply: true
+---
+
+# Auto-push after changes
+
+When you finish a task that modifies files in this repository:
+
+1. Check `git status` and commit all intentional changes (do not commit secrets).
+2. Push to `origin` on the current branch without waiting for the user to ask.
+3. Use Git at `C:\Users\Antara\AppData\Local\GitHubDesktop\app-3.5.8\resources\app\git\cmd\git.exe` if `git` is not on PATH.
+4. Briefly report the commit hash and that the push succeeded.
+
+Skip push only when the user explicitly says not to push, or when there are no changes to commit.
