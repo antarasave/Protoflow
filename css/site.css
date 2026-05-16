@@ -1205,32 +1205,25 @@
     .step-zero-item {
       flex: 1 1 140px;
       min-width: 120px;
-      max-width: 200px;
+      max-width: 220px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      text-align: center;
-      gap: 12px;
-      padding: 20px 14px;
-      border: 1px solid var(--border-strong);
-      border-radius: var(--radius);
-      background: var(--bg2);
+      justify-content: center;
+      text-align: left;
+      gap: 10px;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background: transparent;
     }
-    .step-zero-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-sm);
-      display: grid;
-      place-items: center;
-      background: var(--brand-muted);
-      border: 1px solid var(--brand-border);
-      color: var(--brand-hover);
+    .step-zero-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--dim);
       flex-shrink: 0;
-    }
-    .step-zero-icon svg {
-      width: 18px;
-      height: 18px;
-      display: block;
     }
     .step-zero-item-title {
       font-size: 14px;
@@ -1263,6 +1256,7 @@
       .step-zero-item {
         max-width: 280px;
         width: 100%;
+        justify-content: flex-start;
       }
       .step-zero-arrow {
         width: auto;
